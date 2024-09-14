@@ -832,7 +832,6 @@ var PACMAN = (function () {
  } 
  
  function gamesplayedfunc() {
- console.log(gamesplayed)
  gamesplayed = parseInt(gamesplayed) + 1;
 
  }
@@ -855,7 +854,6 @@ var PACMAN = (function () {
 
  async function checkBalanceAndStartGame() {
 
-    console.log('User ID:', userId); // Debugging
 
     fetch(`/incrementTokens/${userId}`, {
         method: 'PATCH', // or 'PUT'
@@ -875,7 +873,6 @@ var PACMAN = (function () {
             dialog("Add More Tokens to Play");           
             console.error('Error:', data.message);
         } else {
-            console.log('Updated User:', data);
             updateUIWithNewTokens(data.tokens);
 
             startNewGame();
@@ -1047,12 +1044,9 @@ function updateUIWithNewTokens(tokens) {
  stateChanged = false;
  map.draw(ctx);
  dialog("Press Play to Start a New Game");
- console.log("endgame?")
- console.log(user.theScore()) 
  gamesplayedfunc()
  startButton.innerHTML = "Play"
  currentvalue.innerHTML="Current Token Value: 0"
- console.log(currentvalueplaceholder)
 
  if (user.theScore() > 0 ){
     endGame(currentvalueplaceholder);
@@ -1065,7 +1059,6 @@ function updateUIWithNewTokens(tokens) {
 
 async function endGame(value) {
 
-    console.log('User ID:', userId); // Debugging
 
     fetch(`/finalTokens/${userId}?valueToUpdate=${encodeURIComponent(value)}`, {
         method: 'PATCH', // or 'PUT'
@@ -1076,7 +1069,6 @@ async function endGame(value) {
     })
     .then(response => response.json())
     .then(data => {
-        console.log('Updated User:', data);
         updateUIWithNewTokens(data.tokens);
 
     })
