@@ -10,6 +10,10 @@ router.get('/login', (req, res) => {
     res.render('login.ejs', {messages: req.flash()}); // Ensure 'login.ejs' exists in the 'views' directory
 });
 
+router.get('/', (req, res) => {
+    res.render('login.ejs', {messages: req.flash()}); 
+});
+
 
 router.get('/register',(req, res) => {
     const error = req.query.error;
