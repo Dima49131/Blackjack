@@ -53,7 +53,7 @@ app.use("/",UpdatingSystem); // sends system routing to loginSystem.js
 
 
 /* Mongo DB loaded using mongoose */  
-const uri = 'mongodb://127.0.0.1:27017/Database1';
+const uri = 'mongodb+srv://dima:0349g-jrio0oeirjgDDD@cluster0.ua94olb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 mongoose.connect(uri)
   .then(() => {
     console.log('Successfully connected to MongoDB');    
