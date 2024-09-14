@@ -1,0 +1,298 @@
+
+body {
+margin: 0px;
+width: 100%;
+height: 100%;
+font-family: sans-serif;
+background-color: rgba(33, 33, 33, 0.898);
+overflow-x:visible;
+
+}
+#header {
+background-color: rgba(33, 33, 33, 0.898);
+width: 100%;
+height: 60px;
+margin: 0px;
+padding: 0px;
+position: relative;
+right: 0px;
+
+
+
+}
+#addtoken {
+    background-color: rgb(44, 83, 224); /* Original blue color */
+    color: aliceblue;
+    height: 45px;
+    width: 100px;
+    margin: 5px;
+    position: relative;
+    border-radius: 10px;
+    float: right;
+    top: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+#addtoken:hover {
+    background-color: rgb(24, 63, 204); /* Darker blue on hover */
+}
+
+#loginButton {
+    background-color: rgb(44, 83, 224); /* Original blue color */
+    color: aliceblue;
+    height: 45px;
+    width: 100px;
+    margin: 5px;
+    position: relative;
+    border-radius: 10px;
+    float: right;
+    top: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+#loginButton:hover {
+    background-color: rgb(24, 63, 204); /* Darker blue on hover */
+}
+
+
+#tokenbalance {
+    
+color: aliceblue;
+position: relative;
+top: 11px;
+float: right;
+font-size: 85%;
+padding: 10px;
+}
+#homepage {
+background-color: rgba(33, 33, 33, 0.898);
+color: aliceblue;
+width: 150px;
+height: 65px;
+position: relative;
+right: 11px;
+font-size: 110%;
+box-shadow: none;
+}
+#name {
+color: aliceblue;
+float: left;
+position: relative;
+bottom: 15px;
+padding: 10px;
+}
+
+
+
+#gamecollection {
+
+width: 100%;
+height: 289px;
+margin-left: auto;
+margin-right: auto;
+margin-top: 40px;
+position: relative;
+top: 20px;
+overflow-x: scroll;
+overflow-y: hidden;
+white-space: nowrap;
+
+padding-top: 10px;
+
+
+}
+#pacmangame {
+    background-color: black;
+    width: 230px;
+    height: 90%;
+    border-radius: 30px;
+    margin-right: 10px;
+    background-image: url('/images/pacmanphoto5.png');
+    background-size: contain; /* Ensures the image fits inside the button */
+    background-position: center; /* Centers the image horizontally and vertically */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+}
+
+
+
+#tetrisgame {
+width: 230px;
+height: 90%;
+margin-right: 10px;
+border-radius: 30px;
+position: relative;
+bottom: 120px;
+
+}
+
+
+#brickbreakergame {
+width: 230px;
+height: 90%;
+margin-right: 10px;
+border-radius: 30px;
+position: relative;
+bottom: 120px;
+}
+
+
+#flappybirdgame {
+width: 230px;
+height: 90%;
+margin-right: 10px;
+border-radius: 30px;
+position: relative;
+bottom: 120px;
+
+}
+#space {
+width: 3%;
+height: 0%;
+visibility: hidden;
+}
+
+
+
+
+
+#background {
+background-color: none;
+width: 100%;
+height: 280px;
+position: relative;
+bottom: 40px;
+}
+
+
+#pacmanfluff {
+width: 100%;
+height: 400px;
+background-color: rgba(33, 33, 33, 0.898);
+
+
+}
+
+
+#pacmanphoto6 {
+width: 320px;
+margin: 20px;
+}
+
+
+#tetrisfluff {
+width: 100%;
+height: 400px;
+background-color: none;
+}
+
+
+#brickbreakerfluff {
+width: 100%;
+height: 400px;
+background-color: rgba(33, 33, 33, 0.898);
+}
+
+
+#flappybirdfluff {
+width: 100%;
+height: 400px;
+background-color: none;
+}
+
+
+#pacmantitle {
+position: relative;
+bottom: 400px;
+left: 370px;
+color: aliceblue;
+
+
+}
+
+
+#pacmanparagraph {
+color: aliceblue;
+width: 60%;
+position: relative;
+bottom: 400px;
+left: 370px;
+}
+
+
+#playpacman {
+color: aliceblue;
+background-color: rgb(44, 83, 224);
+height: 50px;
+width: 200px;
+border-radius: 10px;
+font-size: 120%;
+position: relative;
+bottom: 380px;
+left: 370px;
+}
+
+
+
+
+
+
+@media all and (max-width: 935px) and (min-width: 810px) {
+
+#pacmanparagraph {
+    width: 50%;
+}
+
+
+}
+@media all and (max-width: 810px) {
+
+#pacmanparagraph {
+    width: 80%;
+}
+#pacmanphoto6 {
+    display: none;
+}
+#pacmantitle {
+    position: relative;
+    left:60px;
+    top:20px;
+   
+}
+#pacmanparagraph {
+    position: relative;
+    left:60px;
+    top:10px;
+   
+}
+#playpacman {
+    position: relative;
+    left: 60px;
+    top: 30px;
+   
+
+
+}
+#pacmanfluff {
+    position: relative;
+    bottom: 20px;
+}
+
+
+
+}
+
+
+.scroll {
+transition: transform 0.3s ease;
+}
+
+
+.scroll:hover {
+    transform: translateY(-10px);
+    cursor:pointer;
+}
+
+
+

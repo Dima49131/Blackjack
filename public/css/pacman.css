@@ -1,0 +1,176 @@
+body {
+    background-color: white;
+}
+
+#pacman {
+    height: 470px;
+    width: 382px;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    position: relative;
+    bottom: -5px;
+
+
+}
+
+
+
+body {
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    font-family: sans-serif;
+    background-color: rgba(33, 33, 33, 0.898);
+}
+
+
+
+#header {
+    background-color: rgba(33, 33, 33, 0.898);
+    width: 100%;
+    height: 60px;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    right: 0px;
+    
+
+}
+
+
+#gameplay{
+    background-color: black;
+    width: 400px;
+    height: 570px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: -20px;
+    border-radius: 10px;
+    
+}
+#addtoken{
+    background-color: rgb(44, 83, 224);
+    color: aliceblue;
+    height: 45px;
+    width: 100px;
+    margin: 5px;
+    position: relative;
+    border-radius: 10px;
+    float: right;
+    position: relative;
+    top: 3px;      
+    cursor: pointer;     
+}
+
+#line {
+    width: 380px;
+    height: 2px;
+    background-color: grey;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 8px;
+}
+
+#wagersize {
+    color: aliceblue;
+    font-size: 90%;
+    position: relative;
+    left: 10px;
+    top: 5px;
+}
+
+#currentvalue {
+    color: aliceblue;
+    font-size: 90%;    
+    position: relative;
+    left: 220px;
+    bottom: 25px;   
+}
+
+#startbutton {
+    width: 380px;
+    height: 40px;
+    position: relative;
+    left: 10px;
+    bottom: 20px;
+    background-color: rgb(44, 83, 224);
+    border-radius: 6px;
+    color: aliceblue;
+    font-size: 110%;
+
+}
+
+#tokenbalance {
+    color: aliceblue;
+    position: relative;
+    top: 11px;
+    float: right;
+    font-size: 85%;
+    padding: 10px;
+}
+ #name {
+    color: aliceblue;
+    float: left;
+    position: relative;
+    bottom: 15px;
+    padding: 10px;
+ }
+
+ #instructions {
+    background-color:  rgba(25, 25, 25, 0.898);
+    width: 95%;
+    height: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: -15px;
+    border-radius: 20px;
+    padding-bottom: 0px;
+ }
+
+ #title {
+    color:aliceblue;
+    position: relative;
+    padding: 20px;
+ }
+
+ #instline {
+    width: 96%;
+    height: 2px;
+    background-color: grey;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    bottom: 27px;
+ }
+
+ #descritpion {
+    color: rgb(207, 214, 219);
+    padding: 20px;
+    position: relative;
+    bottom: 50px;
+ }
+
+ #descritpion2 {
+    color: rgb(207, 214, 219);
+    padding: 20px;
+    position: relative;
+    bottom: 105px;
+ }
+
+ #homepage {
+    background-color: rgba(33, 33, 33, 0.898);
+    color: aliceblue;
+    width: 150px;
+    height: 65px;
+    position: relative;
+    right: 11px;
+    font-size: 110%;
+    box-shadow: none;
+    cursor: pointer;
+ }
+
