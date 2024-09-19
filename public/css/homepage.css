@@ -5,7 +5,7 @@ width: 100%;
 height: 100%;
 font-family: sans-serif;
 background-color: rgba(33, 33, 33, 0.898);
-overflow-x:visible;
+overflow-x:hidden;
 
 }
 #header {
@@ -42,7 +42,7 @@ right: 0px;
     background-color: rgb(44, 83, 224); /* Original blue color */
     color: aliceblue;
     height: 45px;
-    width: 100px;
+    width: 120px;
     margin: 5px;
     position: relative;
     border-radius: 10px;
@@ -55,6 +55,10 @@ right: 0px;
 #loginButton:hover {
     background-color: rgb(24, 63, 204); /* Darker blue on hover */
 }
+
+
+
+
 
 
 #tokenbalance {
@@ -75,8 +79,9 @@ position: relative;
 right: 11px;
 font-size: 110%;
 box-shadow: none;
+cursor: pointer;
 }
-#name {
+#mainName {
 color: aliceblue;
 float: left;
 position: relative;
@@ -270,10 +275,17 @@ left: 370px;
     position: relative;
     left: 60px;
     top: 30px;
-   
-
-
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
 }
+
+
+#playpacman:hover {
+    background-color: rgb(24, 63, 204); /* Darker blue on hover */
+}
+
+
+
 #pacmanfluff {
     position: relative;
     bottom: 20px;

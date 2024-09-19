@@ -20,6 +20,7 @@ const methodOverride = require('method-override');
 const loginSystemRouter = require("./routes/loginSystem");
 const RetroArcadeRouter = require("./routes/RetroArcade");
 const UpdatingSystem = require("./routes/UpdatingSystem");
+const OutsideArcadeRouter = require("./routes/OutsideArcade");
 
 const initializePassport = require("./passport-config");
 initializePassport(
@@ -48,7 +49,15 @@ app.use(express.urlencoded({extended: false}));
 app.use("/",loginSystemRouter); // sends system routing to loginSystem.js
 app.use("/",RetroArcadeRouter); // sends system routing to loginSystem.js
 app.use("/",UpdatingSystem); // sends system routing to loginSystem.js
+app.use("/",OutsideArcadeRouter); // sends system routing to loginSystem.js
 
+
+app.use((req, res, next) => {
+  if (req.method === 'GET' && req.path !== '/login' && !req.isAuthenticated()) {
+      req.session.returnTo = req.originalUrl; // Store the current URL
+  }
+  next();
+});
 
 
 
@@ -65,4 +74,17 @@ mongoose.connect(uri)
 });
 /* Mongo DB loaded using mongoose */  
 
+
+/* each user
+
+gamesPlayed --> only when you loose --> on reload doesn't count
+SumOfScores --> (score of a player combined)
+
+AllUsersScores --> all scores of players SumOfScores, 
+AllGamesPlayed --> all games of players gamesPlayed
+
+Average --> AllUsersScores / AllGamesPlayed
+
+
+*/
 

@@ -61,8 +61,7 @@ body {
     border-radius: 10px;
     float: right;
     position: relative;
-    top: 3px;      
-    cursor: pointer;     
+    top: 3px;           
 }
 
 #line {
@@ -112,7 +111,7 @@ body {
     font-size: 85%;
     padding: 10px;
 }
- #mainName {
+ #name {
     color: aliceblue;
     float: left;
     position: relative;
