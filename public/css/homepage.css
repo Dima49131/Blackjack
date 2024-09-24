@@ -62,52 +62,48 @@ right: 0px;
 
 
 #tokenbalance {
-    
-color: aliceblue;
-position: relative;
-top: 11px;
-float: right;
-font-size: 85%;
-padding: 10px;
+    color: aliceblue;
+    position: relative;
+    top: 11px;
+    float: right;
+    font-size: 85%;
+    padding: 10px;
 }
+
 #homepage {
-background-color: rgba(33, 33, 33, 0.898);
-color: aliceblue;
-width: 150px;
-height: 65px;
-position: relative;
-right: 11px;
-font-size: 110%;
-box-shadow: none;
-cursor: pointer;
+    background-color: rgba(33, 33, 33, 0.898);
+    color: aliceblue;
+    width: 150px;
+    height: 65px;
+    position: relative;
+    right: 11px;
+    font-size: 110%;
+    box-shadow: none;
+    cursor: pointer;
 }
+
 #mainName {
-color: aliceblue;
-float: left;
-position: relative;
-bottom: 15px;
-padding: 10px;
+    color: aliceblue;
+    float: left;
+    position: relative;
+    bottom: 15px;
+    padding: 10px;
 }
-
-
 
 #gamecollection {
-
-width: 100%;
-height: 289px;
-margin-left: auto;
-margin-right: auto;
-margin-top: 40px;
-position: relative;
-top: 20px;
-overflow-x: scroll;
-overflow-y: hidden;
-white-space: nowrap;
-
-padding-top: 10px;
-
-
+    width: 100%;
+    height: 289px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    position: relative;
+    top: 20px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding-top: 10px;
 }
+
 #pacmangame {
     background-color: black;
     width: 230px;
@@ -115,127 +111,124 @@ padding-top: 10px;
     border-radius: 30px;
     margin-right: 10px;
     background-image: url('/images/pacmanphoto5.png');
+    background-size: contain;
+    background-position: center; 
+    background-repeat: no-repeat; 
+}
+
+#brickbreakergame {
+    background-color: black;
+    width: 230px;
+    height: 90%;
+    border-radius: 30px;
+    margin-right: 10px;
+    background-image: url('/images/brick1.png');
     background-size: contain; /* Ensures the image fits inside the button */
     background-position: center; /* Centers the image horizontally and vertically */
     background-repeat: no-repeat; /* Prevents the image from repeating */
 }
 
 
-
 #tetrisgame {
-width: 230px;
-height: 90%;
-margin-right: 10px;
-border-radius: 30px;
-position: relative;
-bottom: 120px;
-
+    position: relative;
+    width: 230px;
+    height: 90%;
+    margin-right: 10px;
+    border-radius: 30px;
+    position: relative;
+    background-image: url('/images/Tetrisphoto8.png');
+    background-size:contain;
+    background-position: center;
 }
-
-
-#brickbreakergame {
-width: 230px;
-height: 90%;
-margin-right: 10px;
-border-radius: 30px;
-position: relative;
-bottom: 120px;
-}
-
 
 #flappybirdgame {
-width: 230px;
-height: 90%;
-margin-right: 10px;
-border-radius: 30px;
-position: relative;
-bottom: 120px;
-
+    width: 230px;
+    height: 90%;
+    margin-right: 10px;
+    border-radius: 30px;
+    position: relative;
+    background-image: url('/images/Flappy1.png');
+    background-size:contain;
+    background-position: center;
+    position: relative;
 }
+
 #space {
-width: 3%;
-height: 0%;
-visibility: hidden;
+    width: 3%;
+    height: 0%;
+    visibility: hidden;
 }
-
-
-
-
 
 #background {
-background-color: none;
-width: 100%;
-height: 280px;
-position: relative;
-bottom: 40px;
+    background-color: none;
+    width: 100%;
+    height: 280px;
+    position: relative;
+    bottom: 40px;
 }
 
 
 #pacmanfluff {
-width: 100%;
-height: 400px;
-background-color: rgba(33, 33, 33, 0.898);
-
-
+    width: 100%;
+    height: 400px;
+    background-color: rgba(33, 33, 33, 0.898);
 }
 
 
 #pacmanphoto6 {
-width: 320px;
-margin: 20px;
+    width: 320px;
+    margin: 20px;
 }
 
 
 #tetrisfluff {
-width: 100%;
-height: 400px;
-background-color: none;
+    width: 100%;
+    height: 400px;
+    background-color: none;
 }
 
 
 #brickbreakerfluff {
-width: 100%;
-height: 400px;
-background-color: rgba(33, 33, 33, 0.898);
+    width: 100%;
+    height: 400px;
+    background-color: rgba(33, 33, 33, 0.898);
 }
 
 
 #flappybirdfluff {
-width: 100%;
-height: 400px;
-background-color: none;
+    width: 100%;
+    height: 400px;
+    background-color: none;
 }
 
 
 #pacmantitle {
-position: relative;
-bottom: 400px;
-left: 370px;
-color: aliceblue;
-
-
+    position: relative;
+    bottom: 400px;
+    left: 370px;
+    color: aliceblue;
 }
 
 
 #pacmanparagraph {
-color: aliceblue;
-width: 60%;
-position: relative;
-bottom: 400px;
-left: 370px;
+    color: aliceblue;
+    width: 60%;
+    position: relative;
+    bottom: 400px;
+    left: 370px;
 }
 
 
 #playpacman {
-color: aliceblue;
-background-color: rgb(44, 83, 224);
-height: 50px;
-width: 200px;
-border-radius: 10px;
-font-size: 120%;
-position: relative;
-bottom: 380px;
-left: 370px;
+    color: aliceblue;
+    background-color: rgb(44, 83, 224);
+    height: 50px;
+    width: 200px;
+    border-radius: 10px;
+    font-size: 120%;
+    position: relative;
+    bottom: 380px;
+    left: 370px;
 }
 
 
@@ -244,55 +237,50 @@ left: 370px;
 
 
 @media all and (max-width: 935px) and (min-width: 810px) {
-
-#pacmanparagraph {
-    width: 50%;
-}
+    #pacmanparagraph {
+        width: 50%;
+    }
 
 
 }
 @media all and (max-width: 810px) {
-
-#pacmanparagraph {
-    width: 80%;
-}
-#pacmanphoto6 {
-    display: none;
-}
-#pacmantitle {
-    position: relative;
-    left:60px;
-    top:20px;
-   
-}
-#pacmanparagraph {
-    position: relative;
-    left:60px;
-    top:10px;
-   
-}
-#playpacman {
-    position: relative;
-    left: 60px;
-    top: 30px;
-    cursor: pointer;
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
-}
-
-
-#playpacman:hover {
-    background-color: rgb(24, 63, 204); /* Darker blue on hover */
-}
+    #pacmanparagraph {
+        width: 80%;
+    }
+    #pacmanphoto6 {
+        display: none;
+    }
+    #pacmantitle {
+        position: relative;
+        left:60px;
+        top:20px;
+    
+    }
+    #pacmanparagraph {
+        position: relative;
+        left:60px;
+        top:10px;
+    
+    }
+    #playpacman {
+        position: relative;
+        left: 60px;
+        top: 30px;
+        cursor: pointer;
+        transition: background-color 0.3s ease; /* Smooth transition for background color */
+    }
 
 
-
-#pacmanfluff {
-    position: relative;
-    bottom: 20px;
-}
+    #playpacman:hover {
+        background-color: rgb(24, 63, 204); /* Darker blue on hover */
+    }
 
 
 
+    #pacmanfluff {
+        position: relative;
+        bottom: 20px;
+    }
 }
 
 
@@ -305,6 +293,82 @@ transition: transform 0.3s ease;
     transform: translateY(-10px);
     cursor:pointer;
 }
+
+#brickphoto {
+    width: 320px;
+    margin: 20px;
+    float: left;
+    position: relative;
+    bottom: 0px;
+}
+#bricktitle {
+    color: aliceblue;
+    margin-left: 30px;
+    position: relative;
+    top:20px;
+}
+#brickparagraph {
+    color: aliceblue;
+    margin: 30px;
+    position: relative;
+    top:10px;
+}
+#playbrick {
+    color: aliceblue;
+    background-color: rgb(44, 83, 224);
+    height: 50px;
+    width: 200px;
+    border-radius: 10px;
+    font-size: 120%;
+    margin-left: 0px;
+    position: relative;
+    top:0px;
+}
+
+
+@media all and (max-width: 810px) {
+   
+    #brickparagraph {
+        width: 80%;
+        margin: 0px;
+    }
+    #brickphoto {
+        display: none;
+    }
+    #bricktitle {
+        position: relative;
+        left:60px;
+        top:20px;
+        margin: 0px;
+    }
+    #brickparagraph {
+        position: relative;
+        left:60px;
+        top:10px;
+        margin: 0px;
+       
+    }
+    #playbrick {
+        position: relative;
+        left: 60px;
+        top: 30px;
+        margin: 0px;
+       
+
+
+    }
+    #brickbreakerfluff {
+        position: relative;
+        bottom: 20px;
+    }
+
+
+}
+
+
+
+
+
 
 
 

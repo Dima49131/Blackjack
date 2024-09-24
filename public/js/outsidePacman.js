@@ -1360,7 +1360,7 @@ if (localStorage.getItem("firstLoad") === null) {
 }
 
 // Update the token balance display
-tokenbalance.innerHTML = localStorage.getItem("balanceupdate") + ".00 Tokens";
+tokenbalance.innerHTML = localStorage.getItem("balanceupdate") + " Tokens";
 
 let currentvalue = document.getElementById("currentvalue")
 
