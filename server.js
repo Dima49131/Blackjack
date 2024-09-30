@@ -7,6 +7,12 @@ if (process.env.NODE_ENV !== 'production'){require('dotenv').config();}
 /*
 npm i express ejs --save-dev nodemon dotenv mongoose body-parser bcrypt passport passport-local express-session express-flash method-override
 
+
+git add .
+git commit -m "fixing stuff"
+git push origin main
+
+
 */
 
 const express = require('express');
