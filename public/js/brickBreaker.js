@@ -21,7 +21,7 @@ const level1 = [
   [],
   [],
   ['R','R','R','R','R','R','R','R','R','R','R','R','R','R'],
-  ['R','Y','R','R','R','R','R','R','R','R','R','R','R','R'],
+  ['R','R','R','R','R','R','R','R','R','R','R','R','R','R'],
   ['O','O','O','O','O','O','O','O','O','O','O','O','O','O'],
   ['O','O','O','O','O','O','O','O','O','O','O','O','O','O'],
   ['G','G','G','G','G','G','G','G','G','G','G','G','G','G'],
@@ -303,12 +303,6 @@ document.addEventListener('keydown', function(e) {
 });
 
 
-document.addEventListener('mousemove', function(e) {
-    if (gameState === states.PLAYING) {
-        // Center the paddle on the mouse
-        paddle.x = e.clientX-280;  
-    }
-});
 
 
 document.addEventListener('keyup', function(e) {
