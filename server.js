@@ -7,6 +7,9 @@ if (process.env.NODE_ENV !== 'production'){require('dotenv').config();}
 /*
 npm i express ejs --save-dev nodemon dotenv mongoose body-parser bcrypt passport passport-local express-session express-flash method-override
 
+Note: installed new package 
+npm install -g ejs-lint
+
 
 git add .
 git commit -m "fixing stuff"
@@ -14,6 +17,11 @@ git push origin main
 
 
 a new note
+
+
+git fetch origin
+git remote show origin
+
 
 */
 
@@ -54,10 +62,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended: false}));
-app.use("/",loginSystemRouter); // sends system routing to loginSystem.js
-app.use("/",RetroArcadeRouter); // sends system routing to loginSystem.js
-app.use("/",UpdatingSystem); // sends system routing to loginSystem.js
-app.use("/",OutsideArcadeRouter); // sends system routing to loginSystem.js
+app.use("/",loginSystemRouter); 
+app.use("/",RetroArcadeRouter); 
+app.use("/",UpdatingSystem); 
+app.use("/",OutsideArcadeRouter);
 
 
 app.use((req, res, next) => {
@@ -70,7 +78,8 @@ app.use((req, res, next) => {
 
 
 /* Mongo DB loaded using mongoose */  
-const uri = 'mongodb+srv://dima:0349g-jrio0oeirjgDDD@cluster0.ua94olb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const password = process.env.MONGODB_PASSWORD;
+const uri = `mongodb+srv://dima:${password}@cluster0.ua94olb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 mongoose.connect(uri)
   .then(() => {
     console.log('Successfully connected to MongoDB');    

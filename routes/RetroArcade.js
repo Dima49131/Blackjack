@@ -18,32 +18,4 @@ router.get('/homepage', (req, res) => {
     }
 });
 
-router.get('/pacman', (req, res) => {
-    const userID = (req.user ? req.user._id.toString() : null);
-    if (userID) {
-            res.render('pacman.ejs', {
-                 id: userID, 
-                 name: req.user.name,
-                 tokenBalance: req.user.tokens
-
-                });
-    } else {
-        res.redirect('/login');
-    }
-});
-
-router.get('/brickBreaker', (req, res) => {
-   // const userID = (req.user ? req.user._id.toString() : null);
-   // if (userID) {
-            res.render('brickBreaker.ejs', {
-                 //id: userID, 
-                 //name: req.user.name,
-                 //tokenBalance: req.user.tokens
-
-                });
-    //} else {
-    //    res.redirect('/login');
-   // }
-});
-
 module.exports = router;
