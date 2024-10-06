@@ -1,29 +1,4 @@
-
-
-
-// loads in variables from .env file
 if (process.env.NODE_ENV !== 'production'){require('dotenv').config();}
-
-/*
-npm i express ejs --save-dev nodemon dotenv mongoose body-parser bcrypt passport passport-local express-session express-flash method-override
-
-Note: installed new package 
-npm install -g ejs-lint
-
-
-git add .
-git commit -m "fixing stuff"
-git push origin main
-
-
-a new note
-
-
-git fetch origin
-git remote show origin
-
-
-*/
 
 const express = require('express');
 const path = require('path');
@@ -33,10 +8,7 @@ const flash = require('express-flash');
 const session = require('express-session');
 const methodOverride = require('method-override');
 
-const loginSystemRouter = require("./routes/loginSystem");
 const RetroArcadeRouter = require("./routes/RetroArcade");
-const UpdatingSystem = require("./routes/UpdatingSystem");
-const OutsideArcadeRouter = require("./routes/OutsideArcade");
 
 const initializePassport = require("./passport-config");
 initializePassport(
@@ -62,11 +34,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended: false}));
-app.use("/",loginSystemRouter); 
 app.use("/",RetroArcadeRouter); 
-app.use("/",UpdatingSystem); 
-app.use("/",OutsideArcadeRouter);
-
 
 app.use((req, res, next) => {
   if (req.method === 'GET' && req.path !== '/login' && !req.isAuthenticated()) {
@@ -74,7 +42,6 @@ app.use((req, res, next) => {
   }
   next();
 });
-
 
 
 /* Mongo DB loaded using mongoose */  
