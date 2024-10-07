@@ -14,79 +14,57 @@
 <div id="formContainer"></div> <!-- This can be put anywhere -->
 
 <body>
-    <div class="Navbar">
-        <a href="/homepage" class="SiteNameHeader">Retro Arcade</a>
 
-        <div class="Navbar-Links">
-            <a href="/">Our Team</a>
-            <a href="/">Contact Us</a>
-            <a href="/">Contributers</a>
-      
-            <!-- Is here if we wanna add more links-->
+    <div class="MainContainer">
+        <div class="Navbar">
+            <a href="/homepage" class="SiteNameHeader">Retro Arcade</a>
+
+            <div class="Navbar-Links">
+             <!--
+                <a href="/">Our Team</a>
+                <a href="/">Contact Us</a>
+        -->
+                
+                <!-- Is here if we wanna add more links-->
+            </div>
+
+            <% if (id) { %>
+                
+                <div class="sub-container">
+                    <div id="tokenbalance"><%= tokenBalance.toFixed(2) %> Tokens</div>
+                    <div>
+                        <form action="/logout?_method=DELETE" method="POST">
+                            <button  class="commonButton" id="logoutButton" type="submit">Log Out</button>
+                        </form>
+                    </div>
+                </div>
+
+            <% } else { %>
+                <div class="sub-container">
+                    <div id="tokenbalance"></div>
+                    <button class="commonButton" id="loginButton">LOGIN/SIGN UP</button>
+                </div>
+                <% } %>
         </div>
 
-        <% if (id) { %>
-            
-            <div class="sub-container">
-                <div id="tokenbalance"><%= tokenBalance.toFixed(2) %> Tokens</div>
-                <div>
-                    <form action="/logout?_method=DELETE" method="POST">
-                        <button  class="commonButton" id="logoutButton" type="submit">Log Out</button>
-                    </form>
-                </div>
+        <div class="spacer"></div>
+
+            <div id="gamecollection">   
+                <a href="/Pacman"><button class="gameTile" id="pacman"></button></a>
+                <a href="/Tetris"><button class="gameTile" id="tetris"></button></a>
+                <a href="/BrickBreaker"><button class="gameTile" id="brickbreaker"></button></a>
+                <a href="/"><button class="gameTile" id="flappybird"></button></a>    
             </div>
 
-        <% } else { %>
-            <div class="sub-container">
-                <div id="tokenbalance"></div>
-                <button class="commonButton" id="loginButton">LOGIN/SIGN UP</button>
-            </div>
-            <% } %>
+
+         
+
     </div>
-
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
-<p>text</p>
+    
+    
 
 
-
-
+<script type="text/javascript" src="/js/homepage.js"></script>
 <script type="text/javascript" src="/js/PopupForm.js"></script>
 </body>
 </html>

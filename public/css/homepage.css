@@ -1,1 +1,73 @@
-/* Nothing needed as of now */
+
+.MainContainer {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Add this line */
+    display: flex;    
+    flex-direction: column;
+    background-color: rgb(24, 35, 66);
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow-y: auto;
+}
+
+.spacer {
+    height: 62px;
+}
+
+#gamecollection {
+    position: relative; /* Required for positioning pseudo-elements */
+    width: 90%;
+    margin-top: 40px;
+    padding: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap; /* Prevent wrapping inside the container */
+    transition: transform 0.5s ease; /* Add smooth transition for scroll */
+    mask-image: linear-gradient(to right, rgb(255, 255, 255, 0), rgba(0,0,0,1) 2%, rgba(0,0,0,1) 98%, rgba(0,0,0,0));
+
+
+}
+
+/* -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1) 2%, rgba(0,0,0,1) 98%, rgba(0,0,0,0)); /* Webkit support */
+    
+
+
+
+#gamecollection::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+    height: 12px; /* Height of the scrollbar for horizontal scrolling */
+}
+
+#gamecollection::-webkit-scrollbar-track {
+    border-radius: 10px; /* Rounded corners for track */
+}
+
+
+#gamecollection::-webkit-scrollbar-thumb:hover {
+    background: rgb(200, 0, 0); /* Darker color on hover */
+}
+
+.gameTile {
+    background-color: black;
+    width: 200px;
+    height: 200px;
+    border-radius: 25px;
+    background-size: contain;
+    background-position: center; 
+    background-repeat: no-repeat; 
+    transition: transform 0.3s ease;
+}
+.gameTile:hover {
+    transform: translateY(-1vw);
+    cursor: pointer;
+}
+
+#tetris { background-image: url('/images/Tetrisphoto8.png');}
+#pacman {background-image: url('/images/pacmanphoto5.png');}
+#brickbreaker {background-image: url('/images/brick1.png');}
+#flappybird { background-image: url('/images/Flappy1.png');}
+
+
+
