@@ -1,87 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Arcade</title>
+    <link rel="stylesheet" href="/css/PopupForm.css">
+    <link rel="stylesheet" href="/css/Navbar.css">
+    <link rel="stylesheet" href="/css/homepage.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
+</head>
 
-<title>Retro Arcade</title>
-<link rel="icon" href="/images/placeholderTitleIcon.png" type="image/png">
-  
-<link rel="stylesheet" href="/css/homepage.css">
-<link rel="stylesheet" href="/css/Popup.css">
+<div id="formContainer"></div> <!-- This can be put anywhere -->
 
+<body>
+    <div class="Navbar">
+        <a href="/homepage" class="SiteNameHeader">Retro Arcade</a>
 
-<div id="header">
-
-
-    <% if (id) { %>
-        <!-- Show logged-in user info -->
-        <div id="logoutArea">
-            <form action="/logout?_method=DELETE" method="POST">
-                <button type="submit">Log Out</button>
-            </form>
+        <div class="Navbar-Links">
+            <a href="/">Our Team</a>
+            <a href="/">Contact Us</a>
+            <a href="/">Contributers</a>
+      
+            <!-- Is here if we wanna add more links-->
         </div>
-    
-        <div id="tokenbalance">
-            <%= tokenBalance.toFixed(2) %> Tokens
-        </div>
-    <% } else { %>
-        <!-- Show login popup trigger if not logged in -->
-        <button id="loginButton">Log In</button>
-    
-        <!-- Hidden login form (popup) -->
-        <div id="popup" class="popup-background hidden">
-            <div class="popup-form">
-               
-            <h1 class="loginHeader">Login</h1>
-            <button id="closePopup" class="close-button">X</button> 
-            <form action="/login" method="POST">
+
+        <% if (id) { %>
             
-                <% if (messages.error && messages.error.length > 0) { %>
-                        <div class="error-message">
-                            <% messages.error.forEach(function(msg) { %>
-                                <p><%= msg %></p>
-                            <% }); %>
-                        </div>
-                    <% } %>
-    
-                <div class="form-container">
-    
-                        <div>
-                            <label for="email" class="emailLabel">Email Or Username</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-    
-                        <div>
-                            <label for="password" class="passwordLabel">Password</label>
-                            <input type="password" id="password" name="password" required>
-                        </div>
-    
-                        <button type="submit" class="loginButton">LOGIN</button>
+            <div class="sub-container">
+                <div id="tokenbalance"><%= tokenBalance.toFixed(2) %> Tokens</div>
+                <div>
+                    <form action="/logout?_method=DELETE" method="POST">
+                        <button  class="commonButton" id="logoutButton" type="submit">Log Out</button>
                     </form>
-                
-                    <div class="sub-container">
-                    <p class="subText">Don't Have an Account?</p>
-                    <a href="/register" id="registerLink" class="registerLink">Register</a>
                 </div>
             </div>
-        </div>
-    
-    <% } %>
-    
-    <div id="mainName">
-        <a href="/homepage">
-        <button id="homepage">Retro Arcade</button></a>
+
+        <% } else { %>
+            <div class="sub-container">
+                <div id="tokenbalance"></div>
+                <button class="commonButton" id="loginButton">LOGIN/SIGN UP</button>
+            </div>
+            <% } %>
     </div>
-</div>
 
-<div id="background">
-    <div id="gamecollection">   
-        <button class="scroll" id="space"></button>
-        <a href="/pacman"><button class="scroll" id="pacmangame"></button></a>
-        <a href="/homepage"><button class="scroll" id="tetrisgame"></button></a>
-        <a href="/homepage"><button class="scroll" id="brickbreakergame"></button></a>
-        <button class="scroll" id="flappybirdgame"></button>
-    </div>
-</div> 
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
+<p>text</p>
 
-<script type="text/javascript" src="/js/homepage.js"></script>
 
 
+
+<script type="text/javascript" src="/js/PopupForm.js"></script>
+</body>
 </html>
