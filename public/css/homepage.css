@@ -54,11 +54,15 @@
     width: 200px;
     height: 200px;
     border-radius: 25px;
-    background-size: contain;
+    display: inline-block; /* Keep items in a horizontal row */
+    margin-right: 10px; /* Add space between items */
+
+    background-size:cover;    
     background-position: center; 
     background-repeat: no-repeat; 
     transition: transform 0.3s ease;
 }
+
 .gameTile:hover {
     transform: translateY(-1vw);
     cursor: pointer;
@@ -70,4 +74,35 @@
 #flappybird { background-image: url('/images/Flappy1.png');}
 
 
+#pacmanbanner {
+    background-image: url('/images/pacmanbanner4.png');
+    background-size: 100%;
+    background-position: top 20px;
+    background-position-x: top 20px;
+}
 
+.banners {
+    width: 95vw;
+    height: 23vw;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 2vw;
+    position: relative;
+    top: 1vw;
+    background-color: black;
+    margin-bottom: 2vw;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 1);
+}
+
+
+.playbuttonhome {
+    background-color: rgb(44, 83, 224);
+    width: 16vw;
+    height: 5vw;
+    color: aliceblue;
+    border-radius: 2vw;
+    position: relative;
+    left: 5.5vw;
+    top: 14vw;
+    font-size: 2vw;
+}

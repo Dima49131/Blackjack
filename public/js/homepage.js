@@ -3,15 +3,13 @@ document.addEventListener("DOMContentLoaded", function () {
     
 
     const gameCollection = document.getElementById("gamecollection");
-    
 
-    Array.from(gameCollection.children).forEach(item => {gameCollection.appendChild(item.cloneNode(true),item.cloneNode());});
-    Array.from(gameCollection.children).forEach(item => {gameCollection.appendChild(item.cloneNode(true),item.cloneNode());});
-    Array.from(gameCollection.children).forEach(item => {gameCollection.appendChild(item.cloneNode(true),item.cloneNode());});
-    Array.from(gameCollection.children).forEach(item => {gameCollection.appendChild(item.cloneNode(true),item.cloneNode());});
-    Array.from(gameCollection.children).forEach(item => {gameCollection.appendChild(item.cloneNode(true),item.cloneNode());});
-    Array.from(gameCollection.children).forEach(item => {gameCollection.appendChild(item.cloneNode(true),item.cloneNode());});
-    Array.from(gameCollection.children).forEach(item => {gameCollection.appendChild(item.cloneNode(true),item.cloneNode());});
+
+    for (let i = 0; i < 7; i++) {
+        Array.from(gameCollection.children).forEach(item => {gameCollection.appendChild(item.cloneNode(true),item.cloneNode());});
+    } 
+
+ 
 
     
     let isScrolling = false; 

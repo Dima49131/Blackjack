@@ -75,8 +75,10 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 
 .sub-container {
     display: flex;
+    flex-direction: column;
     align-items: center; 
-    gap: 20px;
+    justify-content: center; /* Vertical centering */
+
 }
 
 .registerLink {
@@ -86,8 +88,10 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
     text-align: center;
     color: #007bff; /* Initial text color */
     text-decoration: none; /* Remove default underline */
+    font-size: 16px;
     font-weight: normal;
     position: relative; /* Positioning for the pseudo-element */
+    margin-top: 5px;
     padding: 5px; /* Padding to ensure highlight is visible */
     transition: color 0.3s ease, text-decoration 0.3s ease, transform 0.3s ease, background-color 0.3s ease; /* Smooth transitions for color, text-decoration, transform, and background-color */
     cursor: pointer;
@@ -115,8 +119,9 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
 
 .subText {
     font-weight:normal;
-
+    margin: 10px;
 }
+
 .close-button {
     position: absolute;
     top: 10px;

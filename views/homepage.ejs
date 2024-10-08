@@ -30,7 +30,7 @@
 
             <% if (id) { %>
                 
-                <div class="sub-container">
+                <div class="sub-container-navbar">
                     <div id="tokenbalance"><%= tokenBalance.toFixed(2) %> Tokens</div>
                     <div>
                         <form action="/logout?_method=DELETE" method="POST">
@@ -40,7 +40,7 @@
                 </div>
 
             <% } else { %>
-                <div class="sub-container">
+                <div class="sub-container-navbar">
                     <div id="tokenbalance"></div>
                     <button class="commonButton" id="loginButton">LOGIN/SIGN UP</button>
                 </div>
@@ -56,9 +56,10 @@
                 <a href="/"><button class="gameTile" id="flappybird"></button></a>    
             </div>
 
-
-         
-
+            <div id="pacmanbanner" class="banners">
+                <a href="/outsidePacman"><button class="playbuttonhome" id="playpacman">Play Now</button></a>
+            </div>
+           
     </div>
     
     

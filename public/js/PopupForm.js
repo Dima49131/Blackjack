@@ -25,9 +25,10 @@ const formsHTML = `
                 </form>
                 <div class="sub-container">
                     <p class="subText">Don't Have an Account?</p>
-                    
+                    <p class="subText">Create an Account for 50 tokens</p>
                     <button id="showRegisterLink" class="registerLink">Register</button>
-                </div>
+                  
+                    </div>
             </div>
 
             <!-- Registration Form -->
