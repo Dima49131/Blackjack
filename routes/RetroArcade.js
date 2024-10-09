@@ -18,12 +18,22 @@ router.get('/homepage', (req, res) => {
     });
 });
 
-router.post('/login', passport.authenticate('local', {
-    successRedirect: '/homepage', // Redirect to homepage on successful login
-    failureRedirect: '/homepage?loginFailed=true',     // Redirect to login page on failure
-    failureFlash: true             // Optional: use flash messages for feedback
-}));
+router.post('/login', (req, res, next) => {
+    // Capture the current page or referer to redirect after login
+    const redirectTo = req.body.redirectTo || req.headers.referer || '/homepage';  // Use referer or fallback to '/homepage'
 
+    passport.authenticate('local', (err, user, info) => {
+        if (err) return next(err);
+
+        if (!user) {
+            return res.redirect('/login?loginFailed=true');
+        }
+        req.logIn(user, (err) => {
+            if (err) return next(err);
+            return res.redirect(redirectTo);
+        });
+    })(req, res, next);
+});
 
 router.post('/register', async (req, res) => {
     try {
