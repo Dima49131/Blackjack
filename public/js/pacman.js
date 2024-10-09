@@ -853,34 +853,48 @@ var PACMAN = (function () {
  startButton.addEventListener("click",checkBalanceAndStartGame);
 
  async function checkBalanceAndStartGame() {
+    if (userId != ''){
+        fetch(`/incrementTokens/${userId}`, {
+            method: 'PATCH', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+                // Add authentication headers if needed
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            
+            if (data.message){
+                stored = state;
+                setState(PAUSE);
+                audio.pause();
+                map.draw(ctx);
+                dialog("Add More Tokens to Play");           
+                console.error('Error:', data.message);
+            } else {
+                updateUIWithNewTokens(data.tokens);
 
-
-    fetch(`/incrementTokens/${userId}`, {
-        method: 'PATCH', // or 'PUT'
-        headers: {
-            'Content-Type': 'application/json',
-            // Add authentication headers if needed
-        },
-    })
-    .then(response => response.json())
-    .then(data => {
-        
-        if (data.message){
+                startNewGame();
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+    else {
+        if (parseFloat(tokenbalance.innerHTML) < 5){
             stored = state;
             setState(PAUSE);
             audio.pause();
             map.draw(ctx);
             dialog("Add More Tokens to Play");           
-            console.error('Error:', data.message);
         } else {
-            updateUIWithNewTokens(data.tokens);
-
+            tokenbalance.innerHTML=(parseFloat(tokenbalance.innerHTML) + parseFloat(currentvalueplaceholder-5)).toFixed(2)+ " Tokens"
+            tokenbalancepacman = parseFloat(tokenbalance.innerHTML)
+            localStorage.setItem("balanceupdate",tokenbalancepacman)
             startNewGame();
         }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+    }
 }
 function updateUIWithNewTokens(tokens) {
     // Assuming you have an element to show the token balance
@@ -1049,13 +1063,15 @@ function updateUIWithNewTokens(tokens) {
  currentvalue.innerHTML="Current Token Value: 0"
 
  if (user.theScore() > 0 ){
-    endGame(currentvalueplaceholder);
+    if (userId != ''){
+        endGame(currentvalueplaceholder);
+    } else {
+        tokenbalance.innerHTML=(parseFloat(tokenbalance.innerHTML) + parseFloat(currentvalueplaceholder)).toFixed(2)+ " Tokens"
+        tokenbalancepacman = parseFloat(tokenbalance.innerHTML)
+        localStorage.setItem("balanceupdate",tokenbalancepacman)
+    }
  }
 
-
- // tokenbalance.innerHTML=(parseFloat(tokenbalance.innerHTML) + parseFloat(currentvalueplaceholder)).toFixed(2)+ " Tokens"
- //tokenbalancepacman = parseFloat(tokenbalance.innerHTML)
-// localStorage.setItem("balanceupdate",tokenbalancepacman)
 
 async function endGame(value) {
 

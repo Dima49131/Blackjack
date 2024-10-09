@@ -167,6 +167,8 @@ body {
     top: 52px;
 }
 
+
+/* pacman override for gameCollection */
 #gamecollection {
     position: relative; /* Required for positioning pseudo-elements */
     width: auto;
@@ -179,54 +181,4 @@ body {
     white-space: nowrap; /* Prevent wrapping inside the container */
     transition: transform 0.5s ease; /* Add smooth transition for scroll */
     mask-image: linear-gradient(to right, rgb(255, 255, 255, 0), rgba(0,0,0,1) 2%, rgba(0,0,0,1) 98%, rgba(0,0,0,0));
-
-
 }
-
-/* -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1) 2%, rgba(0,0,0,1) 98%, rgba(0,0,0,0)); /* Webkit support */
-    
-
-
-
-#gamecollection::-webkit-scrollbar {
-    width: 12px; /* Width of the scrollbar */
-    height: 12px; /* Height of the scrollbar for horizontal scrolling */
-}
-
-#gamecollection::-webkit-scrollbar-track {
-    border-radius: 10px; /* Rounded corners for track */
-}
-
-
-#gamecollection::-webkit-scrollbar-thumb:hover {
-    background: rgb(200, 0, 0); /* Darker color on hover */
-}
-
-.gameTile {
-    background-color: black;
-    width: 200px;
-    height: 200px;
-    border-radius: 25px;
-    display: inline-block; /* Keep items in a horizontal row */
-    margin-right: 10px; /* Add space between items */
-
-    background-size:cover;    
-    background-position: center; 
-    background-repeat: no-repeat; 
-    transition: transform 0.3s ease;
-}
-
-.gameTile:hover {
-    transform: translateY(-1vw);
-    cursor: pointer;
-}
-
-#tetris { background-image: url('/images/Tetrisphoto8.png');}
-#pacmangame {background-image: url('/images/pacmanphoto5.png');}
-#brickbreaker {background-image: url('/images/brick1.png');}
-#flappybird { background-image: url('/images/Flappy1.png');}
-
-
-
-
-

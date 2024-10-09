@@ -16,64 +16,6 @@
     height: 62px;
 }
 
-#gamecollection {
-    position: relative; /* Required for positioning pseudo-elements */
-    width: 90%;
-    margin-top: 40px;
-    padding: 20px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    white-space: nowrap; /* Prevent wrapping inside the container */
-    transition: transform 0.5s ease; /* Add smooth transition for scroll */
-    mask-image: linear-gradient(to right, rgb(255, 255, 255, 0), rgba(0,0,0,1) 2%, rgba(0,0,0,1) 98%, rgba(0,0,0,0));
-
-
-}
-
-/* -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1) 2%, rgba(0,0,0,1) 98%, rgba(0,0,0,0)); /* Webkit support */
-    
-
-
-
-#gamecollection::-webkit-scrollbar {
-    width: 12px; /* Width of the scrollbar */
-    height: 12px; /* Height of the scrollbar for horizontal scrolling */
-}
-
-#gamecollection::-webkit-scrollbar-track {
-    border-radius: 10px; /* Rounded corners for track */
-}
-
-
-#gamecollection::-webkit-scrollbar-thumb:hover {
-    background: rgb(200, 0, 0); /* Darker color on hover */
-}
-
-.gameTile {
-    background-color: black;
-    width: 200px;
-    height: 200px;
-    border-radius: 25px;
-    display: inline-block; /* Keep items in a horizontal row */
-    margin-right: 10px; /* Add space between items */
-
-    background-size:cover;    
-    background-position: center; 
-    background-repeat: no-repeat; 
-    transition: transform 0.3s ease;
-}
-
-.gameTile:hover {
-    transform: translateY(-1vw);
-    cursor: pointer;
-}
-
-#tetris { background-image: url('/images/Tetrisphoto8.png');}
-#pacman {background-image: url('/images/pacmanphoto5.png');}
-#brickbreaker {background-image: url('/images/brick1.png');}
-#flappybird { background-image: url('/images/Flappy1.png');}
-
-
 #pacmanbanner {
     background-image: url('/images/pacmanbanner4.png');
     background-size: 100%;
@@ -82,16 +24,41 @@
 }
 
 .banners {
-    width: 95vw;
+    width: 100%;
     height: 23vw;
     margin-left: auto;
     margin-right: auto;
-    border-radius: 2vw;
     position: relative;
     top: 1vw;
     background-color: black;
     margin-bottom: 2vw;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 1);
+}
+
+
+.commonBannerButton {
+    background-color: rgb(44, 83, 224);
+    font-size: 13px;
+    font-weight: bold;
+    color: aliceblue;
+    height: 50px;
+    width: 150px;
+    border: 2px solid rgb(0, 0, 0); 
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;  
+    position: relative;
+    left: 5.5vw;
+    top: 14vw;
+}
+.commonBannerButton:hover {
+    background-color: rgb(24, 63, 204);
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(44, 83, 224, 0.8); /* Glow effect */
+    border: 2px solid rgb(255, 255, 255); 
+}
+.commonBannerButton:hover::after {
+    box-shadow: 0 0 20px rgba(44, 83, 224, 0.8); /* Glow effect on hover */
 }
 
 
@@ -106,3 +73,11 @@
     top: 14vw;
     font-size: 2vw;
 }
+
+/* Hide everything on small screens 
+@media only screen and (max-width: 600px) {
+    * {
+        display: none;
+    }
+}
+*/

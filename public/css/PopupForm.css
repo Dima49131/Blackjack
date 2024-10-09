@@ -1,4 +1,15 @@
 
+
+/* Keyframe definitions */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 .popup-background {
     display: none;
     position: fixed;
@@ -23,9 +34,11 @@
     color: white;
     padding: 20px;
     font-weight: bold;
+    opacity: 1;
+    animation: fadeIn 0.5s ease; /* Apply fade-in animation */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transition */
 }
 
-  
 .loginHeader {
     margin: 0;
     margin-bottom: 20px;

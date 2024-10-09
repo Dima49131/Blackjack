@@ -1,0 +1,61 @@
+
+#gamecollection {
+    position: relative; /* Required for positioning pseudo-elements */
+    width: 90%;
+    margin-top: 40px;
+    padding: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap; /* Prevent wrapping inside the container */
+    transition: transform 0.5s ease; /* Add smooth transition for scroll */
+    mask-image: linear-gradient(to right, rgb(255, 255, 255, 0), rgba(0,0,0,1) 2%, rgba(0,0,0,1) 98%, rgba(0,0,0,0));
+
+
+}
+
+/* -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1) 2%, rgba(0,0,0,1) 98%, rgba(0,0,0,0)); /* Webkit support */
+
+
+#gamecollection::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+    height: 12px; /* Height of the scrollbar for horizontal scrolling */
+}
+
+#gamecollection::-webkit-scrollbar-track {
+    border-radius: 10px; /* Rounded corners for track */
+}
+
+
+#gamecollection::-webkit-scrollbar-thumb:hover {
+    background: rgb(200, 0, 0); /* Darker color on hover */
+}
+
+.gameTile {
+    background-color: black;
+    width: 200px;
+    height: 200px;
+    border-radius: 25px;
+    display: inline-block; 
+    margin-right: 10px; 
+    background-size: cover;    
+    background-position: center; 
+    background-repeat: no-repeat; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, opacity 0.3s ease, border 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0.9;
+}
+
+.gameTile:hover {
+    transform: translateY(-1vw) scale(1.05); /* Slight scaling for more emphasis */
+    cursor: pointer;
+    border: 2px solid rgb(255, 255, 255); 
+    box-shadow: 0 0px 5px rgb(255, 255, 255); /* Larger shadow to simulate a pop-up */
+    opacity: 1; /* Full opacity on hover */
+    background-color: rgba(0, 0, 0, 0.8); /* Darken the background color slightly */
+}
+
+#tetris { background-image: url('/images/Tetrisphoto8.png');}
+#pacman {background-image: url('/images/pacmanphoto5.png');}
+#brickbreaker {background-image: url('/images/brick1.png');}
+#flappybird { background-image: url('/images/Flappy1.png');}
+

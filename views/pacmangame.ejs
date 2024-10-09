@@ -6,6 +6,7 @@
     <title>Retro Arcade</title>
     <link rel="stylesheet" href="/css/PopupForm.css">
     <link rel="stylesheet" href="/css/Navbar.css">
+    <link rel="stylesheet" href="/css/gameCollection.css">
     <link rel="stylesheet" href="/css/pacman.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
@@ -28,6 +29,7 @@
     <% if (id) { %>
         
         <div class="sub-container-navbar">
+            <div id="username"><%= name %></div>
             <div id="tokenbalance"><%= tokenBalance.toFixed(2) %> Tokens</div>
             <div>
                 <form action="/logout?_method=DELETE" method="POST">
@@ -39,7 +41,7 @@
     <% } else { %>
         <div class="sub-container-navbar">
             <div id="tokenbalance"></div>
-            <button class="commonButton" id="loginButton">LOGIN/SIGN UP</button>
+            <button class="commonButton" id="loginButton">Add Tokens</button>
         </div>
         <% } %>
 </div>

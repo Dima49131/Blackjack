@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/Navbar.css">
     <link rel="stylesheet" href="/css/brickBreaker.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
 </head>
 
 <div id="formContainer"></div> <!-- This can be put anywhere -->
@@ -27,7 +28,6 @@
     <% if (id) { %>
         
         <div class="sub-container-navbar">
-            <div id="username"><%= name %></div>
             <div id="tokenbalance"><%= tokenBalance.toFixed(2) %> Tokens</div>
             <div>
                 <form action="/logout?_method=DELETE" method="POST">
@@ -45,18 +45,26 @@
 </div>
 
 
+
+<script type="text/javascript" src="/js/PopupForm.js"></script>
+<script type="text/javascript" src="/js/homepage.js"></script>
+<script type="text/javascript" src="/js/brickBreaker.js"></script>
+</html>
+
+
 <!-- The container that wraps the canvas -->
-<div class="game-container">
-    <canvas width="400" height="585" id="game"></canvas>
-    
-  </div>
-  
-  <div id="stats">
-      <div id="wagersize">Wager Size: 2 Tokens</div>
-      <div id="tokenvalue">Current Token Value: 0</div>
-      <button id="playbutton">Play</button>
-      <div id="tokenMessage"></div>
-  </div>
+<div class="game-container">    
+    <div id="titleScreen">
+        <h1>Brick Breaker Pro</h1>
+        <button id="startButton">Start Game</button>
+
+    </div>
+
+    <div id="blackOverlay"></div> <!-- Add this div for the black fade effect -->
+    <canvas id="gameCanvas"></canvas>
+
+
+</div>
   
   <div id="instructions">
     <h2 id="title">Retro Arcade's: Breakout</h1>
@@ -75,11 +83,8 @@
     <a href="/"><button class="gameTile" id="flappybird"></button></a>  
 </div>
 
-
-
-<script type="text/javascript" src="/js/PopupForm.js"></script>
-<script type="text/javascript" src="/js/homepage.js"></script>
-<script type="text/javascript" src="/js/brickBreaker.js"></script>
-
+<script>
+    const userId = "<%= id %>"; // User ID available in client-side JS
+</script>
 </html>
   

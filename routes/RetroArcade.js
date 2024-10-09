@@ -26,7 +26,7 @@ router.post('/login', (req, res, next) => {
         if (err) return next(err);
 
         if (!user) {
-            return res.redirect('/login?loginFailed=true');
+            return res.redirect('/homepage?loginFailed=true');
         }
         req.logIn(user, (err) => {
             if (err) return next(err);
