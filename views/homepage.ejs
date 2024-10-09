@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/Navbar.css">
     <link rel="stylesheet" href="/css/gamecollection.css">
     <link rel="stylesheet" href="/css/homepage.css">
+    <link rel="stylesheet" href="/css/keyframes.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
 </head>
@@ -25,12 +26,8 @@
                 <a href="/">Our Team</a>
                 <a href="/">Contact Us</a>
         -->
-                
-                <!-- Is here if we wanna add more links-->
             </div>
-
-            <% if (id) { %>
-                
+            <% if (id) { %>                
                 <div class="sub-container-navbar">
                     <div id="username">Welcome <%= name %></div>
                     <div id="tokenbalance"><%= tokenBalance.toFixed(2) %> Tokens</div>
@@ -40,7 +37,6 @@
                         </form>
                     </div>
                 </div>
-
             <% } else { %>
                 <div class="sub-container-navbar">
                     <div id="tokenbalance"></div>
@@ -51,18 +47,30 @@
 
         <div class="spacer"></div>
 
-            <div id="gamecollection">   
-                <a href="/pacmangame"><button class="gameTile" id="pacman"></button></a>
-                <a href="/Tetris"><button class="gameTile" id="tetris"></button></a>
-                <a href="/BrickBreaker"><button class="gameTile" id="brickbreaker"></button></a>
-                <a href="/"><button class="gameTile" id="flappybird"></button></a>    
-            </div>
+        <div id="gamecollection">   
+            <a href="/pacmangame"><button class="gameTile" id="pacman"></button></a>
+            <a href="/Tetris"><button class="gameTile" id="tetris"></button></a>
+            <a href="/BrickBreaker"><button class="gameTile" id="brickbreaker"></button></a>
+            <a href="/"><button class="gameTile" id="flappybird"></button></a>    
+        </div>
+        
+        <div class="spacer"></div>
 
-            <div id="pacmanbanner" class="banners">
-                <a href="/pacmangame"><button class="commonBannerButton" id="pacmanBannerButton">Play Now</button></a>
+        <div class="banners-container">
+            <div id="pacmanbanner" class="banner">
+                <a href="/pacmangame"><button class="commonBannerButton">Play Now</button></a>
+            </div>
+            
+            <div id="tetrisbanner" class="banner">
+                <a href="/Tetris"><button class="commonBannerButton">Play Now</button></a>
+                <img id="tetrislogo" src="/images/tetrislogo.png">
             </div>
            
-            
+            <div id="breakoutbanner" class="banner">
+                <a href="/outsideBrickBreaker"><button class="commonBannerButton">Play Now</button></a>
+                <img id="breakoutlogo" src="/images/breakoutlogo.png">
+            </div>
+        </div>
 
     </div>
     
