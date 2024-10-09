@@ -9,8 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
         Array.from(gameCollection.children).forEach(item => {gameCollection.appendChild(item.cloneNode(true),item.cloneNode());});
     } 
 
- 
-
+    gameCollection.scrollLeft= gameCollection.scrollWidth / 2;
     
     let isScrolling = false; 
     gameCollection.addEventListener("wheel", function (event) {

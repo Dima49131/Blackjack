@@ -18,6 +18,8 @@ const session = require('express-session');
 const methodOverride = require('method-override');
 
 const RetroArcadeRouter = require("./routes/RetroArcade");
+const updatingSystemRouter = require("./routes/updatingSystem");
+
 
 const initializePassport = require("./passport-config");
 initializePassport(
@@ -44,6 +46,7 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended: false}));
 app.use("/",RetroArcadeRouter); 
+app.use("/",updatingSystemRouter); 
 
 app.use((req, res, next) => {
   if (req.method === 'GET' && req.path !== '/login' && !req.isAuthenticated()) {
