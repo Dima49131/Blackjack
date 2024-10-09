@@ -53,4 +53,64 @@ router.delete('/logout', async (req, res, next) => {
     });
 });
 
+
+
+
+//Justin added the code below except the final line
+
+router.get('/ourteam', (req, res) => {
+    const userID = req.user ? req.user._id.toString() : null;
+    const messages = req.flash('error'); // Capture flash messages
+
+    // Render the homepage with user details if logged in
+    res.render('ourteam.ejs', {
+        id: userID,  // Pass null if not logged in
+        name: req.user ? req.user.name : null,  // Pass null if not logged in
+        tokenBalance: req.user ? req.user.tokens : null, // Pass null if not logged in
+        messages
+    });
+});
+
+router.get('/pacmangame', (req, res) => {
+    const userID = req.user ? req.user._id.toString() : null;
+    const messages = req.flash('error'); // Capture flash messages
+
+    // Render the homepage with user details if logged in
+    res.render('pacmangame.ejs', {
+        id: userID,  // Pass null if not logged in
+        name: req.user ? req.user.name : null,  // Pass null if not logged in
+        tokenBalance: req.user ? req.user.tokens : null, // Pass null if not logged in
+        messages
+    });
+});
+
+router.get('/BrickBreaker', (req, res) => {
+    const userID = req.user ? req.user._id.toString() : null;
+    const messages = req.flash('error'); // Capture flash messages
+
+    // Render the homepage with user details if logged in
+    res.render('BrickBreaker.ejs', {
+        id: userID,  // Pass null if not logged in
+        name: req.user ? req.user.name : null,  // Pass null if not logged in
+        tokenBalance: req.user ? req.user.tokens : null, // Pass null if not logged in
+        messages
+    });
+});
+
+router.get('/Tetris', (req, res) => {
+    const userID = req.user ? req.user._id.toString() : null;
+    const messages = req.flash('error'); // Capture flash messages
+
+    // Render the homepage with user details if logged in
+    res.render('Tetris.ejs', {
+        id: userID,  // Pass null if not logged in
+        name: req.user ? req.user.name : null,  // Pass null if not logged in
+        tokenBalance: req.user ? req.user.tokens : null, // Pass null if not logged in
+        messages
+    });
+});
+
 module.exports = router;
+
+
+

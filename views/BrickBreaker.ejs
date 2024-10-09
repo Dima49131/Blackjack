@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Arcade</title>
+    <link rel="stylesheet" href="/css/PopupForm.css">
+    <link rel="stylesheet" href="/css/Navbar.css">
+    <link rel="stylesheet" href="/css/brickBreaker.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+</head>
+
+<div id="formContainer"></div> <!-- This can be put anywhere -->
+
+<div class="Navbar">
+    <a href="/homepage" class="SiteNameHeader">Retro Arcade</a>
+
+    <div class="Navbar-Links">
+     <!--
+        <a href="/">Our Team</a>
+        <a href="/">Contact Us</a>
+-->
+        
+        <!-- Is here if we wanna add more links-->
+    </div>
+
+    <% if (id) { %>
+        
+        <div class="sub-container-navbar">
+            <div id="tokenbalance"><%= tokenBalance.toFixed(2) %> Tokens</div>
+            <div>
+                <form action="/logout?_method=DELETE" method="POST">
+                    <button  class="commonButton" id="logoutButton" type="submit">Log Out</button>
+                </form>
+            </div>
+        </div>
+
+    <% } else { %>
+        <div class="sub-container-navbar">
+            <div id="tokenbalance"></div>
+            <button class="commonButton" id="loginButton">LOGIN/SIGN UP</button>
+        </div>
+        <% } %>
+</div>
+
+
+
+<script type="text/javascript" src="/js/PopupForm.js"></script>
+<script type="text/javascript" src="/js/homepage.js"></script>
+<script type="text/javascript" src="/js/brickBreaker.js"></script>
+</html>
+
+
+<!--
+
+    <!DOCTYPE html>
+<html>
+<head>
+  <title>Basic Breakout HTML Game with Score and Start Screen</title>
+  <meta charset="UTF-8">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    /* Container for the game canvas */
+    .game-container {
+     display: block; /* Change to block */
+     margin: 0 auto;
+      margin: 0px;
+      padding: 20px;
+      border: 0px solid; /* Visual border */
+      border-radius: 10px;         /* Rounded corners */
+      box-sizing: border-box;
+      height: 720px;
+      width: 420px;
+      margin: 0 auto;
+      box-sizing: border-box;
+      
+    }
+
+    body {
+      margin: 0px;
+      width: 100%;
+      height: 100%;
+	  font-family: sans-serif;
+      background-color: rgba(33, 33, 33, 0.898);
+      
+    }
+    #header {
+        background-color: rgba(33, 33, 33, 0.898);
+        width: 100%;
+        height: 60px;
+     }
+
+     #addtoken{
+            background-color: rgb(44, 83, 224);
+            color: aliceblue;
+            height: 45px;
+            width: 100px;
+            margin: 5px;
+            position: relative;
+            border-radius: 10px;
+            float: right;
+            position: relative;
+            top: 3px;           
+        }
+        #tokenbalance {
+            color: aliceblue;
+            position: relative;
+            top: 11px;
+            float: right;
+            font-size: 85%;
+            padding: 10px;
+        }
+        #homepage {
+            background-color: rgba(33, 33, 33, 0.898);
+            color: aliceblue;
+            width: 150px;
+            height: 65px;
+            position: relative;
+            right: 11px;
+            font-size: 110%;
+            box-shadow: none;
+        }
+
+         #name {
+            color: aliceblue;
+            float: left;
+            position: relative;
+            bottom: 15px;
+            padding: 10px;
+         }
+
+         #stats {
+            width: 420px;
+            height: 100px;
+            display: block; /* Change to block */
+            margin: 0 auto;
+            
+         }
+         #wagersize {
+            color: aliceblue;
+            position: relative;
+            left: 35px;
+            bottom: 197px;
+         }
+         #tokenvalue {
+            color: aliceblue;
+            float: right;
+            position: relative;
+            right: 20px;
+            bottom: 215px;
+         }
+         #playbutton {  
+            width: 380px;
+            height: 40px;
+            background-color: rgb(44, 83, 224);
+            border-radius: 6px;
+            color: aliceblue;
+            font-size: 110%;
+            position: relative;
+            bottom: 200px;
+            left: 30px;
+         }
+         #tokenMessage {
+            color: white;
+            position: relative;
+            bottom:445px;
+            font-family:Arial, Helvetica, sans-serif;
+
+         }
+
+         #instructions {
+            background-color:  rgba(25, 25, 25, 0.898);
+            width: 95%;
+            height: 250px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            bottom: 215px;
+            border-radius: 20px;
+            padding-bottom: 0px;
+         }
+
+         #title {
+            color:aliceblue;
+            position: relative;
+            padding: 20px;
+         }
+
+         #instline {
+            width: 96%;
+            height: 2px;
+            background-color: grey;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            bottom: 27px;
+         }
+
+         #descritpion {
+            color: rgb(207, 214, 219);
+            padding: 20px;
+            position: relative;
+            bottom: 50px;
+         }
+         
+    
+
+    canvas {
+      background: black;
+    }
+  </style>
+</head>
+<body>
+
+<div id="header">
+    <button id="addtoken" onclick="tokenadjust()">Add Tokens</button>
+    <div id="tokenbalance">
+        10.00 Tokens
+    </div>
+    <div id="name">
+        <a href="homepage.html">
+        <button id="homepage" onclick="storetokens()">Retro Arcade</button></a>
+    </div>
+        
+    </div>
+</div>
+</body>
+
+<!-- The container that wraps the canvas -->
+<div class="game-container">
+    <canvas width="400" height="585" id="game"></canvas>
+    
+  </div>
+  
+  <div id="stats">
+      <div id="wagersize">Wager Size: 2 Tokens</div>
+      <div id="tokenvalue">Current Token Value: 0</div>
+      <button id="playbutton">Play</button>
+      <div id="tokenMessage"></div>
+  </div>
+  
+  <div id="instructions">
+    <h2 id="title">Retro Arcade's: Breakout</h1>
+    <div id="instline"></div>
+    <p id="descritpion">Breakout is a classic arcade-style game where your goal is to break all the bricks on the screen using a ball, which you bounce off a movable paddle. Use the arrow keys to control the paddle and be fast because you only get one life. As usual Retro Arcades offers an interesting twist... competition from Breakout players all around the world. As you play your tokens will increase giving you the opportunity to end the game with up to double your wager. Retro Arcade collects data on the scores of all players. From this data an average score is made. As you approach this score your multiplier will increase and when you exceed the average your multiplier will begin to exceed one.</p>
+  </div>
+
+
+<h2 id="suggestiontitle">You May Also Like</h2>
+<div id="suggestionline"></div>
+   
+<div id="gamecollection">   
+    <a href="/pacmangame"><button class="gameTile" id="pacman"></button></a>
+    <a href="/Tetris"><button class="gameTile" id="tetris"></button></a>
+    <!--<a href="/BrickBreaker"><button class="gameTile" id="brickbreaker"></button></a>-->
+    <a href="/"><button class="gameTile" id="flappybird"></button></a>  
+</div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  </html>
+  

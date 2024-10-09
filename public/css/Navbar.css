@@ -81,6 +81,7 @@ body {
     align-items: center; 
     text-decoration: none;
     transition: background-color 0.3s ease;
+    
 }
 .SiteNameHeader:hover{
     background-color: rgb(19, 28, 53); 
