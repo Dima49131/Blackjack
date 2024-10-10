@@ -194,6 +194,7 @@ body::-webkit-scrollbar {
  #breakoutbanner {
     background-image: url('/images/Breakoutbanner.png');
     background-size: 110%;
+    margin-bottom: 35px;
  }
  
  
