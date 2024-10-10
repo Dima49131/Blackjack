@@ -29,7 +29,7 @@
             </div>
             <% if (id) { %>                
                 <div class="sub-container-navbar">
-                    <div id="username">Welcome <%= name %></div>
+                    <!--<div id="username">Welcome <%= name %></div>-->
                     <div id="tokenbalance"><%= tokenBalance.toFixed(2) %> Tokens</div>
                     <div>
                         <form action="/logout?_method=DELETE" method="POST">
@@ -56,14 +56,14 @@
         
        
         <div id="pacmanbanner" class="banners">
-            <a href="/outsidePacman"><button class="playbuttonhome" id="playpacman">Play Now</button></a>
+            <a href="/pacmangame"><button class="playbuttonhome" id="playpacman">Play Now</button></a>
          </div>
          <div id="tetrisbanner" class="banners">
-            <a href="/outsideTetris"><button class="playbuttonhome" id="playtetris">Play Now</button></a>
+            <a href="/Tetris"><button class="playbuttonhome" id="playtetris">Play Now</button></a>
             <img id="tetrislogo" src="/images/tetrislogo.png">
          </div>
          <div id="breakoutbanner" class="banners">
-            <a href="/outsideBrickBreaker"><button class="playbuttonhome" id="playbreakout">Play Now</button></a>
+            <a href="/BrickBreaker"><button class="playbuttonhome" id="playbreakout">Play Now</button></a>
             <img id="breakoutlogo" src="/images/breakoutlogo.png">
          </div>
          
