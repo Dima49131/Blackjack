@@ -134,7 +134,7 @@
 
 
 
-<canvas width="320" height="640" id="game"></canvas>
+<canvas width="320" height="500" id="game"></canvas>
 
 
 <div id="stats">
@@ -348,11 +348,11 @@
   
    const canvas = document.getElementById('game');
    const context = canvas.getContext('2d');
-   const grid = 32;
+   const grid = 25;
    const tetrominoSequence = [];
    const playfield = [];
   
-   for (let row = -2; row < 20; row++) {
+   for (let row = -2; row < 10; row++) {
      playfield[row] = [];
      for (let col = 0; col < 10; col++) {
        playfield[row][col] = 0;
