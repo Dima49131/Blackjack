@@ -170,7 +170,7 @@ body {
 
 /* pacman override for gameCollection */
 #gamecollection {
-    position: relative; /* Required for positioning pseudo-elements */
+    position: relative; 
     width: auto;
     margin-left: 30px;
     margin-right: 30px;
@@ -178,7 +178,7 @@ body {
     padding: 20px;
     overflow-x: auto;
     overflow-y: hidden;
-    white-space: nowrap; /* Prevent wrapping inside the container */
-    transition: transform 0.5s ease; /* Add smooth transition for scroll */
+    white-space: nowrap; 
+    transition: transform 0.5s ease;
     mask-image: linear-gradient(to right, rgb(255, 255, 255, 0), rgba(0,0,0,1) 2%, rgba(0,0,0,1) 98%, rgba(0,0,0,0));
 }

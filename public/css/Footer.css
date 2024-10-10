@@ -1,0 +1,60 @@
+.Footer {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    background-color: rgb(24, 35, 66); 
+    color: white;
+    padding: 20px; 
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; /* Font family */
+}
+
+.sub-container-footer-left {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center; 
+}
+
+.sub-container-footer-right {
+    display: flex; 
+    justify-content: flex-end; 
+    align-items: center; 
+}
+
+.sub-container-footer-right a {
+    color: white;
+    padding: 20px; 
+    margin-left: 5vh; 
+    text-decoration: none; 
+    transition: background-color 0.3s; 
+}
+
+.sub-container-footer-right a:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* Add a hover effect */
+}
+
+.social-icons {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    color: white;
+    font-size: 24px;
+}
+
+ .social-icons a {
+    color: white;
+    font-size: 24px;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.Footer-Links a {
+    color: white;
+}
+
+
+#FooterLine {
+    height: 2px;
+    background-color: rgb(255, 255, 255);
+ }
