@@ -1,8 +1,7 @@
 
 #gamecollection {
     position: relative; /* Required for positioning pseudo-elements */
-    width: 90%;
-    border: 2px solid red;
+    width: 95%;
     margin-top: 40px;
     padding: 20px;
     overflow-x: auto;
