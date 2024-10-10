@@ -4,13 +4,17 @@ html, body {
     padding: 0;
     width: 100%;
     height: 100%;
-    overflow-y: auto; /* Let the entire page scroll if content overflows */
+    overflow-y: auto; 
+}
+
+body::-webkit-scrollbar {
+    display: none; 
 }
 
 .MainContainer {
-    position: relative; /* Keeps container in document flow */
+    position: relative; 
     width: 100%;
-    height: auto; /* Let the height expand based on content */
+    height: auto; 
     display: flex;
     flex-direction: column;
     background-color: rgb(24, 35, 66);
@@ -19,64 +23,59 @@ html, body {
     box-sizing: border-box;
 }
 
-
 .spacer {
     height: 62px;
 }
 
-/* General container for all banners */
 .banners-container {
-    box-sizing: border-box; /* Include padding and border in the width */
+    box-sizing: border-box; 
 
     width: 100%;
-    height: auto; /* Remove fixed height to allow for full content display */
+    height: auto; 
     background-color: black;
-    margin-bottom: 2vw; /* Add space at the bottom */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 1); /* Keep your shadow */
+    margin-bottom: 2vw;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 1); 
 
 }
-/* Each banner should stack vertically */
+
 .banner {
-    background-size: 100%; /* Make the image fit the width */
+    background-size: 100%; 
     width: 100%;
-    height: 23vw; /* Define height of the banners */
-    background-color: black; /* Set background color */
-    margin-bottom: 2vw; /* Space between banners */
-    display: block; /* Ensure banners stack vertically */
+    height: 23vw; 
+    background-color: black; 
+    margin-bottom: 2vw; 
+    display: block; 
 }
 
-/* Specific banners */
 #pacmanbanner {
     background-image: url('/images/pacmanbanner4.png');
 }
 
 #tetrisbanner {
     background-image: url('/images/tetrisbanner2.png');
-    background-size: 120%; /* Adjust image scaling */
+    background-size: 120%; 
     background-position: center;
 }
 
 #breakoutbanner {
     background-image: url('/images/Breakoutbanner.png');
-    background-size: 110%; /* Adjust image scaling */
+    background-size: 110%;
 }
 
-/* Logos inside banners */
 #tetrislogo, #breakoutlogo {
     height: 7vw;
-    width: auto; /* Make width auto to maintain aspect ratio */
+    width: auto; 
     position: relative;
-    top: 3vw; /* Adjust top position */
+    top: 3vw; 
 }
 
-/* Additional styles for individual logos */
 #tetrislogo {
     right: 14vw;
 }
 
 #breakoutlogo {
     right: 15vw;
-    top: 5vw; /* Adjust top margin for this specific logo */
+    top: 5vw; 
 }
 
 
@@ -94,11 +93,11 @@ html, body {
 .commonBannerButton:hover {
     background-color: rgb(24, 63, 204);
     transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(44, 83, 224, 0.8); /* Glow effect */
+    box-shadow: 0 0 20px rgba(44, 83, 224, 0.8); 
     border: 2px solid rgb(255, 255, 255); 
 }
 .commonBannerButton:hover::after {
-    box-shadow: 0 0 20px rgba(44, 83, 224, 0.8); /* Glow effect on hover */
+    box-shadow: 0 0 20px rgba(44, 83, 224, 0.8);
 }
 
 
@@ -115,6 +114,7 @@ html, body {
 
 
 /* banner stuff def needs reorginization*/
+/* Yes I agree very true - Dimitri*/
 
 #pacmanbanner {
     background-image: url('/images/pacmanbanner4.png');
@@ -138,7 +138,6 @@ html, body {
     
  }
  
- 
  .playbuttonhome {
     background-color: rgb(44, 83, 224);
     width: 16vw;
@@ -161,7 +160,7 @@ html, body {
  .playbuttonhome:hover {
     background-color: rgb(24, 63, 204);
     transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(44, 83, 224, 0.8); /* Glow effect */
+    box-shadow: 0 0 20px rgba(44, 83, 224, 0.8); 
     border: 2px solid rgb(255, 255, 255); 
 }
  
