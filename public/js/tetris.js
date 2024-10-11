@@ -161,7 +161,7 @@
    }
 
 
-   let average = 2000
+   let average = 1000
    let tokenvalueplaceholder = 0
    let tokenbalancebrick = 0
    tokenbalance.innerHTML = localStorage.getItem("balanceupdate") + " Tokens"
