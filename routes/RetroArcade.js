@@ -18,6 +18,22 @@ router.get('/homepage', (req, res) => {
     });
 });
 
+
+// Serve the homepage regardless of authentication state
+router.get('/', (req, res) => {
+    const userID = req.user ? req.user._id.toString() : null;
+    const messages = req.flash('error'); // Capture flash messages
+
+    // Render the homepage with user details if logged in
+    res.render('homepage.ejs', {
+        id: userID,  // Pass null if not logged in
+        name: req.user ? req.user.name : null,  // Pass null if not logged in
+        tokenBalance: req.user ? req.user.tokens : null, // Pass null if not logged in
+        messages
+    });
+});
+
+
 router.post('/login', (req, res, next) => {
     // Capture the current page or referer to redirect after login
     const redirectTo = req.body.redirectTo || req.headers.referer || '/homepage';  // Use referer or fallback to '/homepage'
