@@ -155,8 +155,8 @@
      const points = [0, 100, 300, 500, 800]; // score for 0, 1, 2, 3, 4 lines cleared
      score += points[linesCleared];
      playbutton.innerHTML= Math.min(parseFloat((score)/(average*1.3)).toFixed(2),2.00)+" X";
-     tokenvalue.innerHTML="Current Token Value: "+Math.min(parseFloat(2*(score)/(average*1.3)).toFixed(2),4.00);
-     tokenvalueplaceholder=Math.min(parseFloat(2*(score)/(average*1.3)).toFixed(2),10.00)
+     tokenvalue.innerHTML="Current Token Value: "+Math.min(parseFloat(5*(score)/(average*1.3)).toFixed(2),10.00);
+     tokenvalueplaceholder=Math.min(parseFloat(5*(score)/(average*1.3)).toFixed(2),10.00)
     
    }
 
