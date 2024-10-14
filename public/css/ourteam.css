@@ -1,0 +1,72 @@
+body {
+    background-color: rgb(24, 35, 66);
+}
+
+#profilecont {
+  display: flex;
+  justify-content: center; /* Center images horizontally */
+  align-items: center; /* Center images vertically (if container has height) */
+  gap: 10vw; /* Spacing between images */
+}
+
+.profilepic {
+    width: 30vw;
+    height: auto;
+    margin-top: 100px;
+}
+
+#titles {
+    display: flex;
+  justify-content: center; /* Center images horizontally */
+  align-items: center; /* Center images vertically (if container has height) */
+  gap: 10vw; /* Spacing between images */
+}
+
+#name {
+    width: 30vw;
+    height: auto;
+    margin-top: 100px;
+    text-align: center;
+    color: aliceblue;
+    position: relative;
+    bottom: 80px;
+    font-size: 150%;
+}
+
+#aboutuscont{
+    display: flex;
+    justify-content: center; /* Center images horizontally */
+    align-items: center; /* Center images vertically (if container has height) */
+    gap: 5vw; /* Spacing between images */
+}
+
+#aboutus {
+    width: 35vw;
+    height: auto;
+    margin-top: 100px;
+    text-align: center;
+    color: aliceblue;
+    position: relative;
+    bottom: 80px;
+    font-size: 110%;
+    white-space: normal; /* Ensure text can wrap */
+    word-wrap: break-word;
+    position: relative;
+    bottom: 150px;
+}
+
+#phone {
+    display: flex;
+    justify-content: center; /* Center images horizontally */
+    align-items: center; /* Center images vertically (if container has height) */
+}
+
+#number {
+    text-align: center;
+    color: aliceblue;
+    position: relative;
+    bottom: 80px;
+    font-size: 110%;
+    white-space: normal; /* Ensure text can wrap */
+    word-wrap: break-word;
+}
