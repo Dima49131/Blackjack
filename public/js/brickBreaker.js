@@ -145,7 +145,7 @@ function loop() {
   if (gameState === states.PLAYING) {
     playbutton.innerHTML= Math.min(parseFloat((score)/(average*1.3)).toFixed(2),2.00)+" X";
     tokenvalue.innerHTML="Current Token Value: "+Math.min(parseFloat(2*(score)/(average*1.3)).toFixed(2),4.00);
-    tokenvalueplaceholder=Math.min(parseFloat(2*(score)/(average*1.3)).toFixed(2),10.00)
+    tokenvalueplaceholder=Math.min(parseFloat(2*(score)/(average*1.3)).toFixed(2),4.00)
 
 
   }
