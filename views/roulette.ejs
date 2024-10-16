@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="title" content="Javascript Roulette">
+	<meta name="description" content="A fully functioning roulette game made using Javascript and CSS">
+	<meta name="author" content="ozboware">
+	<meta property="og:url" content="/">
+	<meta property="og:title" content="Javascript Roulette">
+	<meta property="og:description" content="A fully functioning roulette game made using Javascript and CSS">
+	<link href="./css/style.css" rel="stylesheet" type="text/css">
+    <title>Retro Arcade</title>
+    <link rel="stylesheet" href="/css/mobile.css">
+	<link rel="stylesheet" href="/css/Navbar.css">
+	<link rel="stylesheet" href="/css/Footer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+
+
+<div id="formContainer"></div> <!-- This can be put anywhere -->
+
+<div class="Navbar">
+    <a href="/homepage" class="SiteNameHeader">Retro Arcade</a>
+
+    <div class="Navbar-Links">
+     <!--
+        <a href="/">Our Team</a>
+        <a href="/">Contact Us</a>
+-->
+        
+        <!-- Is here if we wanna add more links-->
+    </div>
+
+    <% if (id) { %>
+        
+        <div class="sub-container-navbar">
+            <!--<div id="username"><%= name %></div>-->
+            <div id="tokenbalance"><%= tokenBalance.toFixed(2) %> Tokens</div>
+            <div>
+                <form action="/logout?_method=DELETE" method="POST">
+                    <button  class="commonButton" id="logoutButton" type="submit">Log Out</button>
+                </form>
+            </div>
+        </div>
+
+    <% } else { %>
+        <div class="sub-container-navbar">
+            <div id="tokenbalance"></div>
+            <button class="commonButton" id="loginButton">Add Tokens</button>
+        </div>
+        <% } %>
+</div>
+
+
+
+
+
+
+
+<body>
+	<script src="./js/app.js"></script>
+	<script src="./js/PopupForm.js"></script>
+</body>
+
+<div id="FooterLine"></div>
+    <div class="Footer">
+        <div class="section" id="Iconsection">
+            <div id="foottitle">Retro Arcade</div>
+            <ul class="social-icons">
+                <a href="https://www.instagram.com" class="fab fa-instagram"></a>
+                <a href="https://www.linkedin.com"class="fab fa-linkedin"></a>
+                <a href="https://www.twitter.com" class="fab fa-twitter"></a>
+            </ul>
+            <p id="Att">@retroarcade</p>
+        </div>
+        
+        <div class="section" id="linkSection1">
+            <a href="/homepage">HOME</a>
+        </div>
+        <div class="section" id="linkSection2">
+            <a href="/ourteam">OUR TEAM</a>
+        </div>
+        <div class="section" id="linkSection3">
+            <a href="/ourteam">CONTACT SUPPORT</a>
+        </div>
+    </div>
