@@ -15,7 +15,7 @@ html, body{
 #container{
 	display: flex;
 	justify-content: center;
-	background-color: #016D29;
+	background-color: rgb(13, 20, 39);
 	height: 480px;
 	padding-top: 20px;
 	color: #fff;
@@ -408,6 +408,7 @@ html, body{
 	color: #000;
 	overflow:hidden;
 }
+
 
 .pnRed, .pnBlack, .pnGreen{
 	position: relative;
@@ -888,6 +889,71 @@ html, body{
 }
 
 
+
+@media (max-width: 700px) {
+	#container{
+		height: 1250px;
+		width: 500px;
+		background-color: blue;
+	}
+	.ball{
+		
+	}
+	.wheel{
+		transform-origin: 155px 155px;
+		position: relative;
+		left: 230px;
+
+	}
+	#betting_board {
+		position: relative;
+		top: 720px;
+		margin-right: 100px;
+		margin-left: 160px;
+		transform: rotate(90deg);
+}
+	.bankContainer{
+		position: relative;
+		bottom: 20px;
+		left: 10px;
+		width: 200px;
+		transform: rotate(-90deg);
+	}
+	.chipDeck {
+		position: relative;
+		bottom: 190px;
+		left: 100px;
+		width: 200px;
+		height: 80px;
+		padding-top: 10px;
+		transform: rotate(-90deg);
+	}
+	.spinBtn {
+		position: absolute;
+		margin-top: 510px;
+		margin-left: 0px;
+		font-size: 15px;
+		cursor: pointer;
+		background-color: #ffec00;
+		padding: 10px 5px;
+		color: #000;
+		font-weight: bold;
+		width: 190px;
+		text-align: center;
+		background-color: rgb(44, 83, 224);
+		border-radius: 6px;
+		color: aliceblue;
+		font-size: 110%;
+	}
+	#pnContent {
+		
+	}
+	.pnBlock {
+		visibility: hidden;
+
+	}
+	
+}
 
 
 
