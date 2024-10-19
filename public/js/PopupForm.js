@@ -59,6 +59,14 @@ const formsHTML = `
     </div>
 `;
 
+
+
+
+
+
+
+
+
 // Show the pop-up when the login button is clicked
 loginButton.addEventListener('click', () => {
     formContainer.innerHTML = formsHTML; // Insert the forms

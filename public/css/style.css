@@ -1,5 +1,6 @@
 
 
+
 html, body{
 	cursor: default;
 	-webkit-touch-callout: none;
@@ -10,6 +11,7 @@ html, body{
 	user-select: none;
 	overflow-x: hidden;
 	background-color:  rgb(24, 35, 66);
+	height: 1000px;
 }
 
 #container{
@@ -20,21 +22,51 @@ html, body{
 	padding-top: 20px;
 	color: #fff;
 	margin-top: 80px;
-	max-width: 1100px;
+	width: 1100px;
 	margin-left: auto;
 	margin-right: auto;
-	margin-bottom: 20px;
+	margin-bottom: 0px;
 	border-radius: 5px;
+	position: relative;
+	transform: translate(0%) scale(1); 
+	transform-origin: center; 
 }
+
+
+
+
+/*#container {
+	width: 1000px; 
+	height: 500px; 
+	position: relative;
+	left: 50%; 
+	transform: translate(-50%) scale(0.5); 
+	transform-origin: center; 
+	background-color: rgb(13, 20, 39);
+	padding-top: 20px;
+	color: #fff;
+	margin-bottom: 0px;
+	margin-top: -45px;
+	border-radius: 5px;
+
+}*/
+
+
+
+
+
+
+
+
 
 /*notification*/
 #notification{
 	position: absolute;
 	width: 400px;
 	height: 150px;
-	background-color: #ad0205;
+	background-color: rgb(52, 75, 99);
 	z-index: 10;
-	border: 8px solid #d3b201;
+	border: 8px solid rgb(102, 114, 146);
 	border-radius: 12px;
 	transition: 1s;
 	margin-top: 50px;
@@ -60,7 +92,7 @@ html, body{
 	padding: 10px;
 	font-size: 32px;
 	text-align: center;
-	background-color: green;
+	background-color: rgb(44, 83, 224);
 	border-radius: 15px;
 	box-shadow: 3px 4px rgb(0 0 0 / 25%);
 	cursor: pointer;
@@ -177,7 +209,7 @@ html, body{
 .tt1_block{
 	border: 2px solid;
 	width: 65px;
-	position: absolute;
+	position: relative;
 	margin-left: 498px;
 	padding: 31.65px 0px;
 	margin-top: -87.75px;
@@ -199,7 +231,7 @@ html, body{
 }
 
 #wlttb_top{
-    position: absolute;
+    position: relative;
     margin-top: -89px;
     margin-left: 11px;
 }
@@ -227,7 +259,7 @@ html, body{
 }
 
 .wlcb{
-	position: absolute;
+	position: relative;
 	width: 477px;
 	height: 41px;
 	top: 255px;
@@ -286,7 +318,7 @@ html, body{
 }
 
 .spinBtn{
-	position: absolute;
+	position:absolute;
 	margin-top: 429px;
 	margin-left: -640px;
 	font-size: 15px;
@@ -301,6 +333,7 @@ html, body{
     border-radius: 6px;
     color: aliceblue;
     font-size: 110%;
+	z-index: 1000;
 }
 
 .redNum{
@@ -312,7 +345,7 @@ html, body{
 }
 
 .chipDeck, .bankContainer{
-	position: absolute;
+	position: relative;
 	margin-left: -383px;
 	margin-top: -74px;
 	width: 310px;
@@ -324,7 +357,7 @@ html, body{
 }
 
 .bankContainer{
-	margin-top: -21px;
+	margin-top: 5px;
 }
 
 .cdChip{
@@ -388,7 +421,7 @@ html, body{
 }
 
 .pnBlock{
-	position: absolute;
+	position: relative;
 	border: 1px solid;
 	width: 500px;
 	height: 45px;
@@ -397,14 +430,14 @@ html, body{
 }
 
 #pnContent{
-	border: 4px solid #d5b714;
+	border: 4px solid rgb(102, 114, 146);
 	width: 485px;
 	height: 31px;
 	position: relative;
 	display: block;
 	margin-left: 4px;
 	margin-top: 3px;
-	background-color: #fff;
+	background-color: rgb(52, 75, 99);
 	color: #000;
 	overflow:hidden;
 }
@@ -516,7 +549,7 @@ html, body{
 	height: 290px;
 	border-radius: 100%;
 	box-shadow: 0px 0px 8px rgba(0,0,0,0.5);
-	border: 10px solid #F3c620;
+	border: 10px solid rgb(78, 43, 3);
 } 
 
 .block {
@@ -755,7 +788,7 @@ html, body{
 	background-color:#fff;
 	border: 3px solid;
 	border-radius: 100%;
-    position:absolute;
+    position:fixed;
 }
 
 .chipSpan{
@@ -835,124 +868,158 @@ html, body{
 }
 /*chip end*/
 
+
+#instructions {
+    background-color: rgb(13, 20, 39);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 1);
+    width: auto;
+    height: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+    position: relative;
+    top: 0px;
+    border-radius: 20px;
+    padding-bottom: 0px;
+ }
+
+ #title {
+    color:aliceblue;
+    position: relative;
+    padding: 20px;
+ }
+
+ #instline {
+    width: auto;
+    height: 2px;
+    background-color: grey;
+    margin-left: 20px;
+    margin-right: 20px;
+    position: relative;
+    bottom: 27px;
+ }
+
+ #descritpion {
+    color: aliceblue;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: relative;
+    bottom: 30px;
+ }
+
+#suggestiontitle {
+    color: aliceblue;
+    font-size: 130%;
+    margin-left: 40px;
+    position: relative;
+    top: 15px;
+}
+
+#suggestionline {
+    width: 178px;
+    height: 2px;
+    background-color: grey;
+    margin-left: 42px;
+    position: relative;
+    top: 0px;
+}
+
+#gamecollection{
+	position: relative;
+	bottom:20px;
+	height: 235px;
+}
+
+
 @media (max-width: 1050px) {
-	#container{
-		height: 900px;
-		width: 700px;
+    #container {
+        width: 1000px; /* Set fixed width */
+        height: 500px; /* Set fixed height */
+        position: relative;
+        left: 50%; /* Position container horizontally in the middle */
+        transform: translate(-50%) scale(0.8); /* Center both horizontally and vertically, and scale */
+        transform-origin: center; /* Ensure scaling happens from the center */
+        background-color: rgb(13, 20, 39);
+        padding-top: 20px;
+        color: #fff;
+        margin-bottom: 0px;
+		margin-top: 30px;
+        border-radius: 5px;
+        z-index: 1; /* Higher z-index to stay above .Footer */
+    }
+	.Footer {
+		margin-top: 0px;
 	}
-	.ball{
-		
-	}
-	.wheel{
-		transform-origin: 150px 150px;
-		position: relative;
-		left: 50px;
 
-	}
-	#betting_board {
+	#instructions,#suggestiontitle {
 		position: relative;
-		top: 340px;
-		margin-right: 120px;
-		margin-left: 100px;
-}
-	.bankContainer{
+		top: -50px;
+	}
+	#suggestionline {
 		position: relative;
-		bottom: 680px;
-		left: 680px;
-		width: 200px;
+		top: -58px;
 	}
-	.chipDeck {
+	#gamecollection{
 		position: relative;
-		bottom: 540px;
-		left: 680px;
-		width: 200px;
-		height: 80px;
-		padding-top: 10px;
+		top: -80px;
 	}
-	.spinBtn {
-		position: absolute;
-		margin-top: 229px;
-		margin-left: 270px;
-		font-size: 15px;
-		cursor: pointer;
-		background-color: #ffec00;
-		padding: 10px 5px;
-		color: #000;
-		font-weight: bold;
-		width: 190px;
-		text-align: center;
-		background-color: rgb(44, 83, 224);
-		border-radius: 6px;
-		color: aliceblue;
-		font-size: 110%;
-	}
+
+
+
 }
 
 
 
-@media (max-width: 700px) {
-	#container{
-		height: 1250px;
-		width: 500px;
-		background-color: blue;
-	}
-	.ball{
-		
-	}
-	.wheel{
-		transform-origin: 155px 155px;
-		position: relative;
-		left: 230px;
 
+
+
+@media (max-width: 800px) {
+	#container {
+        width: 1000px; /* Set fixed width */
+        height: 500px; /* Set fixed height */
+        position: relative;
+        left: 50%; /* Position container horizontally in the middle */
+        transform: translate(-50%) scale(0.6); /* Center both horizontally and vertically, and scale */
+        transform-origin: center; /* Ensure scaling happens from the center */
+        background-color: rgb(13, 20, 39);
+        padding-top: 20px;
+        color: #fff;
+        margin-bottom: 0px;
+		margin-top: -20px;
+        border-radius: 5px;
+        z-index: 1; /* Higher z-index to stay above .Footer */
+    }
+	.Footer {
+		margin-top: 0px;
 	}
-	#betting_board {
+	#instructions,#suggestiontitle {
 		position: relative;
-		top: 720px;
-		margin-right: 100px;
-		margin-left: 160px;
-		transform: rotate(90deg);
+		top: -100px;
+	}
 }
-	.bankContainer{
-		position: relative;
-		bottom: 20px;
-		left: 10px;
-		width: 200px;
-		transform: rotate(-90deg);
-	}
-	.chipDeck {
-		position: relative;
-		bottom: 190px;
-		left: 100px;
-		width: 200px;
-		height: 80px;
-		padding-top: 10px;
-		transform: rotate(-90deg);
-	}
-	.spinBtn {
-		position: absolute;
-		margin-top: 510px;
-		margin-left: 0px;
-		font-size: 15px;
-		cursor: pointer;
-		background-color: #ffec00;
-		padding: 10px 5px;
-		color: #000;
-		font-weight: bold;
-		width: 190px;
-		text-align: center;
-		background-color: rgb(44, 83, 224);
-		border-radius: 6px;
-		color: aliceblue;
-		font-size: 110%;
-	}
-	#pnContent {
-		
-	}
-	.pnBlock {
-		visibility: hidden;
 
+@media (max-width: 600px) {
+	#container {
+        width: 1000px; /* Set fixed width */
+        height: 500px; /* Set fixed height */
+        position: relative;
+        left: 50%; /* Position container horizontally in the middle */
+        transform: translate(-50%) scale(0.5); /* Center both horizontally and vertically, and scale */
+        transform-origin: center; /* Ensure scaling happens from the center */
+        background-color: rgb(13, 20, 39);
+        padding-top: 20px;
+        color: #fff;
+        margin-bottom: 0px;
+		margin-top: -45px;
+        border-radius: 5px;
+
+    }
+	.Footer {
+		margin-top: 0px;
 	}
-	
+	#instructions {
+		position: relative;
+		top: -125px;
+	}
 }
 
 

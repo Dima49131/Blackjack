@@ -46,9 +46,9 @@ function gameOver(){
 
 		let nBtn = document.createElement('div');
 		nBtn.setAttribute('class', 'nBtn');
-		nBtn.innerText = 'Play again';	
+		nBtn.innerText = 'Add Tokens';	
 		nBtn.onclick = function(){
-			resetGame();
+			document.getElementById('loginButton').click()
 		};
 		notification.append(nBtn);
 	container.prepend(notification);
@@ -367,14 +367,14 @@ function buildBettingBoard(){
 
 	let chipDeck = document.createElement('div');
 	chipDeck.setAttribute('class', 'chipDeck');
-	let chipValues = [1, 5, 10, 25, 'CLEAR'];
+	let chipValues = [1, 5, 10, 'CLEAR'];
 	for(i = 0; i < chipValues.length; i++){
 		let cvi = i;
-		let chipColour = (i == 0)? 'red' : ((i == 1)? 'blue cdChipActive' : ((i == 2)? 'orange' : ((i == 3)? 'gold' : 'clearBet')));
+		let chipColour = (i == 0)? 'red' : ((i == 1)? 'blue cdChipActive':((i == 2)? 'orange': 'clearBet'));
 		let chip = document.createElement('div');
 		chip.setAttribute('class', 'cdChip ' + chipColour);
 		chip.onclick = function(){
-			if(cvi !== 4){
+			if(cvi !== 3){
 				let cdChipActive = document.getElementsByClassName('cdChipActive');
 				for(i = 0; i < cdChipActive.length; i++){
 					cdChipActive[i].classList.remove('cdChipActive');
@@ -550,7 +550,7 @@ function win(winningSpin, winValue, betTotal){
 			nSpan.setAttribute('class', 'nSpan');
 				let nsnumber = document.createElement('span');
 				let nsTxt = document.createElement('span');
-				nsTxt.innerText = 'You Win:' + (winValue + betTotal);
+				nsTxt.innerText = 'You Win: ' + (winValue + betTotal);
 				nSpan.append(nsTxt);
 				
 			notification.append(nSpan);
@@ -587,9 +587,7 @@ function removeBet(e, n, t, o){
 		}
 	}
 
-	if(currentBet == 0 && container.querySelector('.spinBtn')){
-		document.getElementsByClassName('spinBtn')[0].remove();
-	}
+	
 }
 
 function spinWheel(winningSpin){
