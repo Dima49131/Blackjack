@@ -34,6 +34,29 @@ function resetGame(){
 function startGame(){
 	buildWheel();
 	buildBettingBoard();
+	bankpopup();
+}
+
+function bankpopup(){
+	if (bankValue == 0) {
+		let notification = document.createElement('div');
+		notification.setAttribute('id', 'notification');
+		let nSpan = document.createElement('span');
+		nSpan.setAttribute('class', 'nSpan');
+		nSpan.innerText = 'Bankrupt';
+		notification.append(nSpan);
+
+		let nBtn = document.createElement('div');
+		nBtn.setAttribute('class', 'nBtn');
+		nBtn.innerText = 'Add Tokens';	
+		nBtn.onclick = function(){
+			document.getElementById('loginButton').click()
+		};
+		notification.append(nBtn);
+	container.prepend(notification);
+	}
+	
+
 }
 
 function gameOver(){
