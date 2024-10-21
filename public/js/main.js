@@ -9,7 +9,7 @@ $( document ).ready(function() {
 
 var currentTurn = "player";
 var currentWager = 0;
-var currentChipBalance = localStorage.getItem('blackjackChips') || 500;
+var currentChipBalance = localStorage.getItem('balanceupdate');
 var gameWinner = "none"; // To be declared at end of game
 var isGameOver = false;
 
@@ -62,7 +62,8 @@ function enableButton(buttonName, event) {
 function updateVisibleChipBalances() {
 	$(".current-wager").text(currentWager);
 	$(".current-chip-balance").text(currentChipBalance);
-	localStorage.setItem('blackjackChips', currentChipBalance);
+	localStorage.setItem('balanceupdate', currentChipBalance);
+	$("#tokenbalance").text(currentChipBalance + " Tokens");
 }
 
 // Update card hand totals displayed to user throughout the game
@@ -133,9 +134,9 @@ $(".modal").modal({
   );
 
 // EVENT LISTENERS:
-$("#chip-10").click(function(){selectWager(10)});
-$("#chip-25").click(function(){selectWager(25)});
-$("#chip-50").click(function(){selectWager(50)});
+$("#chip-10").click(function(){selectWager(1)});
+$("#chip-25").click(function(){selectWager(5)});
+$("#chip-50").click(function(){selectWager(10)});
 $("#chip-100").click(function(){selectWager(100)});
 
 // Button activation

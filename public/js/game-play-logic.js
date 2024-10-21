@@ -104,55 +104,72 @@ function changeHand(currentDeckStatus) {
 	evaluateGameStatus(); 
 }
 
-function reviewAcesValue(hand, total) {	
-	if (total > 21) {
-		// If they have exactly 2 aces in the first draw, prompt them to choose to split or not
-		if (hand.length === 2) {  
-			enableButton(splitButton, split);
-			$("#two-aces-prompt").modal("open");
-		// Otherwise, just reduce the aces value so they are no longer over 21
-		} else if (hand.length > 2) {
-			reduceAcesValue(hand);
-			isPlayerDone();
-		}
-	} else {
-		isPlayerDone();
-	}
-}
-
-function reduceAcesValue(deck) {
-	for (var i = 0; i < deck.length; i++) {  
-		if (deck[i].name === "ace" && deck[i].value === 11) { // Only focusing on aces that haven't been changed from 11 to 1 already
-			deck[i].value = 1;
-			if (currentTurn === "player") {
-				playerHandTotal -= 10;
-			} else if (currentTurn === "playerSplit") {
-				playerSplitHandTotal -= 10;
-			}
-			updateVisibleHandTotals();
-			Materialize.toast("Your ace value changed from 11 to 1", 1500);
-		}	
-	}
-}
-
 function dealerPlay() {
 	flipHiddenCard();
 	disableButton(standButton);
 	disableButton(hitButton);
 	disableButton(splitButton);
+	
+	// Check if dealer has an ace and should adjust its value
+	reviewAcesValue(dealerHand, dealerHandTotal);
+
+	// After ace adjustment, check if dealer busts
+	if (dealerHandTotal > 21) {
+		setTimeout(function(){
+			gameOver();  // End the game if dealer busts
+		}, 10);  // Give a slight delay before declaring game over
+		return;  // Exit to prevent further dealer actions
+	}
+
 	// The below logic is based on standard blackjack rules
 	if (dealerHandTotal < 17) {
 		setTimeout(function(){
 			dealCard(dealerHand, dealerGameBoard);
-		}, 1000);
-	} else if (dealerHandTotal >= 21) {
-		setTimeout(function(){
-			gameOver();
-		}, 1100);
-	} else if (dealerHandTotal >= 17) {
+		}, 10);
+	} else if (dealerHandTotal >= 17 && dealerHandTotal <= 21) {
 		setTimeout(function(){
 			dealerStatus = "stand";
-			gameOver();
-		}, 0);
+			gameOver();  // End the game if the dealer stands with 17 or more
+		}, 10);
+	}
+}
+
+
+function reviewAcesValue(hand, total) {	
+	if (total > 21) {
+		// Reduce ace value for both the player and dealer
+		if (hand.length > 0) {
+			reduceAcesValue(hand);
+			// Check if the total is still over 21 after reducing the ace value
+			if (currentTurn === "player" || currentTurn === "playerSplit") {
+				isPlayerDone();
+			} else if (currentTurn === "dealer") {
+				dealerPlay(); // Continue dealer play after adjusting ace value
+			}
+		}
+	} else {
+		if (currentTurn === "player" || currentTurn === "playerSplit") {
+			isPlayerDone();
+		}
+	}
+}
+
+function reduceAcesValue(deck) {
+	for (var i = 0; i < deck.length; i++) {  
+		// Only reduce aces that are currently valued at 11
+		if (deck[i].name === "ace" && deck[i].value === 11) {
+			deck[i].value = 1;
+			// Adjust the respective hand total (player or dealer)
+			if (currentTurn === "player") {
+				playerHandTotal -= 10;
+			} else if (currentTurn === "playerSplit") {
+				playerSplitHandTotal -= 10;
+			} else if (currentTurn === "dealer") {
+				dealerHandTotal -= 10;
+			}
+			updateVisibleHandTotals();
+			Materialize.toast("Ace value changed from 11 to 1", 1500);
+			break; // Only reduce one ace at a time
+		}
 	}
 }
