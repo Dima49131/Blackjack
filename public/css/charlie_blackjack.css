@@ -1,0 +1,11 @@
+#blackjack_container {
+    position: relative;
+    top: 80px;
+    border: none;
+}
+
+#hitButton, #standButton, #doubleButton, #newGameButton, #message{
+    position: relative;
+    top: 80px;
+}
+

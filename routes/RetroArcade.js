@@ -162,6 +162,19 @@ router.get('/blackjack', (req, res) => {
     });
 });
 
+router.get('/charlieblackjack', (req, res) => {
+    const userID = req.user ? req.user._id.toString() : null;
+    const messages = req.flash('error'); // Capture flash messages
+
+    // Render the homepage with user details if logged in
+    res.render('charlieblackjack.ejs', {
+        id: userID,  // Pass null if not logged in
+        name: req.user ? req.user.name : null,  // Pass null if not logged in
+        tokenBalance: req.user ? req.user.tokens : null, // Pass null if not logged in
+        messages
+    });
+});
+
 module.exports = router;
 
 
