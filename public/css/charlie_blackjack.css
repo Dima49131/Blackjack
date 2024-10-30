@@ -1,11 +1,368 @@
 #blackjack_container {
     position: relative;
+  }
+  
+  .dealer-label,
+  .player-label,
+  .money-label {
+    position: absolute;
+    color: #9F9;
+    font-size: large;
+  }
+  
+  .dealer-label {
+    left: 20px;
+    top: 15px;
+  }
+  
+  .player-label {
+    left: 20px;
+    top: 210px;
+  }
+  
+  .money-label {
+    left: 20px;
+    top: 410px;
+  }
+  
+  .dealer-card,
+  .player-card {
+    position: absolute;
+    transform: scale(0.8);
+  }
+
+  
+  
+  #dealer1 { left: 185px; top: 2%;}
+  #dealer2 { left: 255px; top: 2%; }
+  #dealer3 { left: 325px; top: 2%; }
+  #dealer4 { left: 395px; top: 2%; }
+  #dealer5 { left: 465px; top: 2%; }
+  
+  #player1 { left: 185px; top: 260px; }
+  #player2 { left: 215px; top: 260px; }
+  #player3 { left: 245px; top: 260px; }
+  #player4 { left: 275px; top: 260px; }
+  #player5 { left: 305px; top: 260px; }
+  
+  .money-amount {
+    position: absolute;
+    left: 70px;
+    top: 445px;
+    color: yellow;
+    font-size: x-large;
+  }
+  
+  .bet-container {
+    position: absolute;
+    left: 300px;
+    top: 425px;
+  }
+  
+  .bet-label {
+    color: #9F9;
+  }
+  
+  .message {
+    color: #600;
+    font-weight: bold;
+    visibility: hidden;
+  }
+  
+
+
+
+
+
+#blackjack_container {
+    position: relative;
     top: 80px;
     border: none;
+    background-color: rgb(24, 35, 66);
+    width: 463.2px; 
+    height:620px;
+    border-top: 7px solid rgb(51, 120, 173);
+    border-left: 7px solid rgb(51, 120, 173);
+    border-right: 7px solid rgb(51, 120, 173);
+    border-bottom: 7px solid rgb(51, 120, 173);
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #hitButton, #standButton, #doubleButton, #newGameButton, #message{
+    position: absolute;
+    top: 500px;
+    z-index: unset;
+
+}
+
+#hitButton, #standButton {
+    border-radius: 0px;
+    width: 214px;
+    height: 40px;
+    background-color: rgb(51, 120, 173);
+    color: white;
+    font-size: 110%;
+    
+    
+}
+#standButton {
     position: relative;
-    top: 80px;
+    left: 223px;
+}
+
+#standhit{
+    position: relative; /* Change from absolute to relative */
+    margin: 0 auto; /* Center the buttons */
+    display: block; /* Ensure they stack */
+    top: -665px;
+    left: -110px;
+}
+
+#doubleButton {
+    border-radius: 2px;
+    width: 436px;
+    height: 40px;
+    background-color: rgb(51, 120, 173);
+    color: white;
+    font-size: 110%;
+    position: relative; /* Change from absolute to relative */
+    margin: 20px auto; /* Center with some spacing */
+    top: -175px;
+    left: 0px;
+}
+
+#newGameButton{
+    border-radius: 5px;
+    width: 435px;
+    height: 60px;
+    background-color: rgb(44, 83, 224);
+    color: white;
+    font-size: 130%;
+    position: absolute;
+    top: 670px;
+    transform: translateX(-100%);
+}
+
+#containerblack {
+    border: 3px black;
+}
+
+#blackjackcover {
+    width: 100%;
+    z-index: unset;
+}
+
+.dealer-card {
+    position: absolute; /* or absolute, based on your layout */
+    display: inline-block; /* Ensure cards are displayed inline */
+    
+}
+
+#display {
+    position: relative;
+    bottom: 171px;
+    left: 208px;
+    color: white;
+    font-size: 120%;
+    font-weight: bold;
+    height: 30px;
+    width: 30.5px;
+    text-align: center;
+    justify-content: center;
+    background-color: rgb(36, 54, 105);
+    z-index: 2;
+}
+
+#displaytriangle {
+    position: relative;
+    bottom: 182px;
+    left: 212.5px;
+    height: 21.5px;
+    width: 21.5px;
+    background-color: rgb(36, 54, 105);
+    z-index: 1;
+    transform: rotate(45deg);
+}
+
+body {
+    overflow-x: hidden;
+    background-color:  rgb(24, 35, 66);
+}
+
+#betdiv {
+    position: relative;
+    top: 60px;
+    left: 13px;
+    border-radius: 2px;
+    width: 436px;
+    height: 40px;
+    background-color: rgb(51, 120, 173);
+    color: white;
+    font-size: 110%;
+}
+
+#bet {
+    width: 380px;
+    height: 30px;
+    position: relative;
+    top: -5px;
+    left: 5px;
+}
+
+#betlabel{
+    visibility: hidden;
+}
+
+
+#TwoX {
+    font-size: 100%;
+    position: relative;
+    bottom: 4px;
+    left: 15px;
+}
+.disable {
+    opacity: 0.5; /* Makes it look inactive */
+    pointer-events: none; /* Prevents click events */
+}
+
+@media screen and (min-width: 700px) {
+    #blackjack_container {
+        position: relative;
+        top: 80px;
+        border: none;
+        background-color: rgb(24, 35, 66);
+        width: 663.2px; 
+        height:380px;
+        border-top: 7px solid rgb(51, 120, 173);
+        border-left: 7px solid rgb(51, 120, 173);
+        border-right: 7px solid rgb(51, 120, 173);
+        border-bottom: 7px solid rgb(51, 120, 173);
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #blackjackcover{
+        width: 463.2px; 
+        height:auto;
+        float: right;
+    }
+    #betdiv {
+        background-color: rgb(51, 120, 173);
+        position: relative;
+        top: -20px;
+        left: 10px;
+        width: 180px;
+    }
+
+    #bet{
+        width: 105px;
+    }
+
+    #betlabel{
+        visibility: visible;
+        color: white;
+        position: relative;
+        bottom: 85px;
+        left: 10px;
+        font-size: 110%;
+    }
+
+    #dealer1 { left: 385px; top: 2%;}
+    #dealer2 { left: 455px; top: 2%; }
+    #dealer3 { left: 525px; top: 2%; }
+    #dealer4 { left: 595px; top: 2%; }
+    #dealer5 { left: 665px; top: 2%; }
+    
+    #player1 { left: 385px; top: 260px; }
+    #player2 { left: 415px; top: 260px; }
+    #player3 { left: 445px; top: 260px; }
+    #player4 { left: 475px; top: 260px; }
+    #player5 { left: 505px; top: 260px; }
+    
+
+
+
+
+
+
+
+
+    #hitButton, #standButton {
+        border-radius: 0px;
+        width: 85px;
+        height: 40px;
+        font-size: 110%;
+        
+        
+    }
+    #standButton {
+        position: relative;
+        left: 95px;
+    }
+    
+    #standhit{
+        position: relative; /* Change from absolute to relative */
+        margin: 0 auto; /* Center the buttons */
+        display: block; /* Ensure they stack */
+        top: -715px;
+        left: -279px;
+    }
+
+    #doubleButton {
+        width: 180px;
+        position: relative;
+        left: -140px;
+        top: -225px;
+    }
+    #newGameButton {
+        border-radius: 5px;
+        width: 180px;
+        height: 40px;
+        background-color: rgb(44, 83, 224);
+        color: white;
+        font-size: 110%;
+        position: relative;
+        top: -150px;
+        left: -362.5px;
+        transform: translateX(22%);
+    }
+
+    #display {
+        position: relative;
+        bottom: -208px;
+        left: 408px;
+        color: white;
+        font-size: 120%;
+        font-weight: bold;
+        height: 30px;
+        width: 30.5px;
+        text-align: center;
+        justify-content: center;
+        background-color: rgb(36, 54, 105);
+        z-index: 2;
+    }
+    
+    #displaytriangle {
+        position: relative;
+        bottom: -197.8px;
+        left: 412.5px;
+        height: 21.5px;
+        width: 21.5px;
+        background-color: rgb(36, 54, 105);
+        z-index: 1;
+        transform: rotate(45deg);
+    }
+
+    #money {
+        visibility: hidden;
+    }
+
+    #TwoX {
+        font-size: 100%;
+        position: relative;
+        bottom: 4px;
+        left: 38px;
+    }
+
 }
 

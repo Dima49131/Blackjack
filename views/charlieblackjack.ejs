@@ -1,35 +1,25 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 
-<!--
- This file has been put into the public domain by its
- author, David Eck (http://math.hws.edu/eck), with no
- guarantees or claims about what it might be good for.
- Please note that the card images used in this game are
- from the Gnome Desktop project, which uses the GPL
- license.  The prototype and scriptaculous JavaScript
- libraries that are used on this page have their own license.
--->
+
 
 <html>
 <head>
 <title>Blackjack in Javascript</title>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+^^^ above code appears to be neccessary for the navbar but messes up the blackjack game
 <script type="text/javascript" src="js/charlieCards.js"></script>
 <script type="text/javascript" src="js/DisplayedCard.js"></script>
-<script type="text/javascript" src="js/prototype.js"></script>
-<script type="text/javascript" src="js/scriptaculous.js?load=effects"></script>
-<script type="text/javascript" src="js/effects.js"></script>
 <script type="text/javascript" src="js/PopupForm.js"></script>
 <script type="text/javascript" src="js/homepage.js"></script>
+<script type="text/javascript" src="/js/mobile.js"></script>
 
-
-
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
--->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script type="text/javascript" src="js/cards.js"></script>
+
+
+
+
+
 
 
 <script type="text/javascript" src="js/main.js"></script>
@@ -45,6 +35,7 @@
 
 <script type="text/javascript">
 
+
 var dealerCards = [];  // Arrays holding the DisplayCard objects used to show the cards
 var playerCards = [];
 
@@ -52,16 +43,17 @@ dealerCards.count = 0;  // Number of cards actually in the dealer's hand
 playerCards.count = 0;   // Number of cards actually in the player's hand
 
 var deck = new Deck();
-
 var gameInProgress = false;
-
 var bet;
 var betInput;
 var money;
 var moneyDisplay;
 var message;
-
 var standButton, hitButton, newGameButton, doubleButton;  // objects representing the buttons, so I can enable/disable them
+
+function updateDisplay(playerTotal) {
+    $("#display").html(playerTotal);
+}
 
 function setup() {
     for (var i = 1; i <= 5; i++) {
@@ -70,38 +62,45 @@ function setup() {
        playerCards[i] = new DisplayedCard("player" + i);
        playerCards[i].cardContainer.style.display = "none";
     }
-    message = document.getElementById("message");
-    standButton = document.getElementById("standButton");
-    hitButton = document.getElementById("hitButton");
-    doubleButton = document.getElementById("doubleButton")
-    newGameButton = document.getElementById("newGameButton");
-    moneyDisplay = document.getElementById("money");
-    money = parseFloat(localStorage.getItem("balanceupdate"));
-    moneyDisplay.innerHTML = "$" + money;
-    betInput = document.getElementById("bet");
-    betInput.value = 1;
-    betInput.disabled = false;
-    standButton.disabled = true;
-    hitButton.disabled = true;
-    doubleButton.disabled = true;
-    newGameButton.disabled = false;
+    message = $("#message");
+    standButton = $("#standButton");
+    hitButton = $("#hitButton");
+    doubleButton = $("#doubleButton");
+    newGameButton = $("#newGameButton");
+    moneyDisplay = $("#money");
+    twox = $("#TwoX");
+    money = parseFloat(localStorage.getItem("balanceupdate")) || 0;
+    moneyDisplay.html("$" + money);
+    betInput = $("#bet");
+    betInput.val(1);
+    twox.removeClass("disabled");
+    standButton.prop("disabled", true);
+    hitButton.prop("disabled", true);
+    doubleButton.prop("disabled", true);
+    newGameButton.prop("disabled", false);
+    twox.prop("disabled", false);
 }
-
 
 function dealCard(cards, runOnFinish, faceDown) {
     var crd = deck.nextCard();
     cards.count++;
+    
     if (faceDown)
-       cards[cards.count].setFaceDown();
+        cards[cards.count].setFaceDown();
     else
-       cards[cards.count].setFaceUp();
+        cards[cards.count].setFaceUp();
+    
     cards[cards.count].setCard(crd);
-    new Effect.SlideDown(cards[cards.count].cardContainer, {
-       duration: 0.5,
-       queue: "end",
-       afterFinish: runOnFinish
+
+    // Animate the card being dealt
+    $(cards[cards.count].cardContainer).slideDown(500, function() {
+        // Call runOnFinish if provided
+        if (runOnFinish) {
+            runOnFinish();
+        }
     });
 }
+
 
 function getTotal(hand) {
    var total = 0;
@@ -117,126 +116,163 @@ function getTotal(hand) {
 }
 
 function startGame() {
-   if (!gameInProgress) {
-      var betText = betInput.value;
-      if ( ! betText.match(/^[0-9]+$/) || betText < 1 || betText > money) {
-          message.innerHTML = "Bet must be a number between 1 and " + money + 
-               ".<br>Fix this problem and press New Game again.";
-          new Effect.Shake("betdiv");
-          return;
-      }
-      betInput.disabled = true;
-      bet = Number(betText);
-      for (var i = 1; i <= 5; i++) {
-          playerCards[i].cardContainer.style.display = "none";
-          playerCards[i].setFaceDown();
-          dealerCards[i].cardContainer.style.display = "none";
-          dealerCards[i].setFaceDown();
-      }
-      message.innerHTML = "Dealing Cards";
-      deck.shuffle();
-      dealerCards.count = 0;
-      playerCards.count = 0;
-      dealCard(playerCards);
-      dealCard(dealerCards);
-      dealCard(playerCards);
-      dealCard(dealerCards, function() {
-             standButton.disabled = false;
-             hitButton.disabled = false;
-             doubleButton.disabled = false;
-             newGameButton.disabled = true;
-             gameInProgress = true;
-             var dealerTotal = getTotal(dealerCards);
-             var playerTotal = getTotal(playerCards);
-             if (dealerTotal == 21) {
-                if (playerTotal == 21)
-                    endGame(false, "You both have Blackjack, but dealer wins on ties.");
-                else
-                    endGame(false, "Dealer has Blackjack.");
-             }
-             else if (playerTotal == 21)
-                endGame(true, "You have Blackjack.");
-             else
-                message.innerHTML = "You have " + playerTotal +".  Hit or Stand?";
-          }, true);
-   }
+    if (!gameInProgress) {
+        var betText = betInput.val();
+        if (!betText.match(/^[0-9]+$/) || betText < 1 || betText > 10) {
+            flashAlert("Bet must be a number between 1 and 10");
+            message.html("Bet must be a number between 1 and " + money + 
+                 ".<br>Fix this problem and press New Game again.");
+            $("#betdiv").effect("shake"); // jQuery UI method
+            return;
+        }
+        betInput.prop("disabled", true);
+        bet = Number(betText);
+        //twox.prop("disabled", true);
+        for (var i = 1; i <= 5; i++) {
+            playerCards[i].cardContainer.style.display = "none";
+            playerCards[i].setFaceDown();
+            dealerCards[i].cardContainer.style.display = "none";
+            dealerCards[i].setFaceDown();
+        }
+        message.html("Dealing Cards");
+        deck.shuffle();
+        dealerCards.count = 0;
+        playerCards.count = 0;
+
+        // Deal cards one by one
+        dealCard(playerCards, function() {
+            // First player's card dealt
+            dealCard(dealerCards, function() {
+                // Dealer's first card dealt
+                dealCard(playerCards, function() {
+                    // Second player's card dealt
+                    dealCard(dealerCards, function() {
+                        // Dealer's second card (face down) dealt
+                        standButton.prop("disabled", false);
+                        hitButton.prop("disabled", false);
+                        doubleButton.prop("disabled", false);
+                        newGameButton.prop("disabled", true);
+                        gameInProgress = true;
+                        var dealerTotal = getTotal(dealerCards);
+                        var playerTotal = getTotal(playerCards);
+                        updateDisplay(playerTotal);
+                        
+                        if (dealerTotal === 21) {
+                            if (playerTotal === 21)
+                                endGame(false, "You both have Blackjack, but dealer wins on ties.");
+                            else
+                                endGame(false, "Dealer has Blackjack.");
+                        } else if (playerTotal === 21) {
+                            endGame(true, "You have Blackjack.");
+                        } else {
+                            message.html("You have " + playerTotal + ". Hit or Stand?");
+                        }
+                    }, true); // Last card for dealer, face down
+                });
+            });
+        });
+    }
 }
+
+
+function isBlackjack(hand) {
+    return (hand.count === 2 && ((hand[1].card.value === 1 && hand[2].card.value >= 10) || (hand[1].card.value >= 10 && hand[2].card.value === 1)));
+}
+
 
 function endGame(win, why) {
-     if (win)
-         money += bet;
-     else
-         money -= bet;
-     message.innerHTML = (win ? "Congratulations! You win.  " : "Sorry! You lose.  ") + why + 
-           (money > 0 ? "<br>Click New Game to play again." : "<br>Looks like you've run out of money!");
-     standButton.disabled = true;
-     hitButton.disabled = true;
-     doubleButton.disabled = true;
-     newGameButton.disabled = true;
-     gameInProgress = false;
-     if (dealerCards[2].faceDown) {
-       dealerCards[2].cardContainer.style.display = "none";
-       dealerCards[2].setFaceUp();
-       new Effect.SlideDown(dealerCards[2].cardContainer, { duration: 0.5, queue: "end" });
-     }
-     new Effect.Fade(moneyDisplay, {
-        duration: 0.5,
-        queue: "end",
-        afterFinish: function() {
-            moneyDisplay.innerHTML = "$" + money;
-            new Effect.Appear(moneyDisplay, {
-               duration: 0.5,
-               queue: "end",
-               afterFinish: function() {
-                   if (money <= 0) {
-                        betInput.value = "BUSTED";
-                        new Effect.Shake(moneyDisplay);
-                   }
-                   else {
-                       if (bet > money)
-                          betInput.value = money;
-                       standButton.disabled = true;
-                       hitButton.disabled = true;
-                       doubleButton.disabled = true;
-                       newGameButton.disabled = false;
-                       betInput.disabled = false;
-                   }
-               }
-            });
+    
+    if (win) {
+        if (isBlackjack(playerCards)) {
+            money += bet * 1.5; // Pay 3:2 for a blackjack
+            flashAlert("You win! " + (bet*1.5) + " Token");
+        } else {
+            money += bet; // Regular win
+            flashAlert("You win! " + bet + " Token");
         }
-     });
+    } else {
+        money -= bet;
+        flashAlert("Sorry! You lose.");
+    }
+
+    // Clear the display at the end of the game
+    updateDisplay('');  // Set to empty string
+    localStorage.setItem("balanceupdate", money);
+
+
+    message.html(why + 
+        (money > 0 ? "<br>Click New Game to play again." : "<br>Looks like you've run out of money!"));
+   
+    standButton.prop("disabled", true);
+    hitButton.prop("disabled", true);
+    doubleButton.prop("disabled", true);
+    newGameButton.prop("disabled", true);
+    gameInProgress = false;
+
+    if (dealerCards[2].faceDown) {
+        dealerCards[2].cardContainer.style.display = "none";
+        dealerCards[2].setFaceUp();
+        $(dealerCards[2].cardContainer).slideDown(500, function() {
+            handlePostGame();
+        });
+    } else {
+        // If the last dealer card is already face up, just handle fading and alerts
+        handlePostGame();
+    }
 }
 
+function handlePostGame() {
+    moneyDisplay.fadeOut(500, function() {
+        moneyDisplay.html("$" + money);
+        moneyDisplay.fadeIn(500, function() {
+            localStorage.setItem("balanceupdate",money)
+            if (money <= 0) {
+                betInput.val("BUSTED");
+                $("#moneyDisplay").effect("shake"); // jQuery UI method
+            } else {
+                if (bet > money)
+                    betInput.val(money);
+                standButton.prop("disabled", true);
+                hitButton.prop("disabled", true);
+                doubleButton.prop("disabled", true);
+                newGameButton.prop("disabled", false);
+                twox.prop("disabled", false);
+            }
+        });
+    });
+
+    // Remove all dealer and player cards after the alert
+    for (let i = 1; i <= 5; i++) {
+        dealerCards[i].cardContainer.style.display = "none"; // Hide dealer cards
+        playerCards[i].cardContainer.style.display = "none"; // Hide player cards
+    }
+}
 
 function dealersTurnAndEndGame() {
-    message.innerHTML = "Dealer's turn...";
+    message.html("Dealer's turn...");
     dealerCards[2].cardContainer.style.display = "none";
     dealerCards[2].setFaceUp();
     var takeNextCardOrFinish = function() {
-       new Effect.SlideDown(dealerCards[dealerCards.count].cardContainer, {
-          duration: 0.5,
-          queue: "end",
-          afterFinish: function() {
-              var dealerTotal = getTotal(dealerCards);
-              if (dealerCards.count < 5 && dealerTotal <= 16) {
-                  dealerCards.count++;
-                  dealerCards[dealerCards.count].setCard(deck.nextCard());
-		          dealerCards[dealerCards.count].setFaceUp();
-                  takeNextCardOrFinish();
-              }
-              else if (dealerTotal > 21)
-                 endGame(true, "Dealer has gone over 21.");
-              else if (dealerCards.count == 5)
-                 endGame(false, "Dealer took 5 cards without going over 21.");
-              else {
-                 var playerTotal = getTotal(playerCards);
-                 if (playerTotal > dealerTotal)
-                    endGame(true, "You have " + playerTotal + ". Dealer has " + dealerTotal + ".");
-                 else if (playerTotal < dealerTotal)
-                    endGame(false, "You have " + playerTotal + ". Dealer has " + dealerTotal + ".");
-                 else
-                    endGame(false, "You and the dealer are tied at " + playerTotal + ".");
-              }
+       $(dealerCards[dealerCards.count].cardContainer).slideDown(500, function() {
+          var dealerTotal = getTotal(dealerCards);
+          if (dealerCards.count < 5 && dealerTotal <= 16) {
+              dealerCards.count++;
+              dealerCards[dealerCards.count].setCard(deck.nextCard());
+              dealerCards[dealerCards.count].setFaceUp();
+              takeNextCardOrFinish();
+          }
+          else if (dealerTotal > 21)
+             endGame(true, "Dealer has gone over 21.");
+          else if (dealerCards.count == 5)
+             endGame(false, "Dealer took 5 cards without going over 21.");
+          else {
+             var playerTotal = getTotal(playerCards);
+             if (playerTotal > dealerTotal)
+                endGame(true, "You have " + playerTotal + ". Dealer has " + dealerTotal + ".");
+             else if (playerTotal < dealerTotal)
+                endGame(false, "You have " + playerTotal + ". Dealer has " + dealerTotal + ".");
+             else
+                endGame(false, "You and the dealer are tied at " + playerTotal + ".");
           }
        });
     };
@@ -246,11 +282,12 @@ function dealersTurnAndEndGame() {
 function hit() {
    if (!gameInProgress)
       return;
-   standButton.disabled = true;
-   hitButton.disabled = true;
-   doubleButton.disabled = true;
+   standButton.prop("disabled", true);
+   doubleButton.prop("disabled", true);
+   hitButton.prop("disabled", true);
    dealCard(playerCards, function() {
       var playerTotal = getTotal(playerCards);
+      updateDisplay(playerTotal); // Update the display with the current total
       if (playerTotal > 21)
          endGame(false, "YOU WENT OVER 21!");
       else if (playerCards.count == 5)
@@ -258,47 +295,65 @@ function hit() {
       else if (playerTotal == 21)
          dealersTurnAndEndGame();
       else {
-         message.innerHTML = "You have " + playerTotal + ". Hit or Stand?";
-         hitButton.disabled = false;
-         doubleButton.disabled = false;
-         standButton.disabled = false;
+         message.html("You have " + playerTotal + ". Hit or Stand?");
+         hitButton.prop("disabled", false);
+         doubleButton.prop("disabled", false);
+         standButton.prop("disabled", false);
       }
    });
 }
 
-//double down
+function TwoX() {
+    // Get the current bet value
+    let currentBet = parseFloat($("#bet").val());
 
+    // Check if the current bet is a number and within the allowed range
+    if (!isNaN(currentBet) && currentBet > 0) {
+        // Only double the bet if it's 5 or less
+        if (currentBet <= 5) {
+            // Double the bet
+            let newBet = currentBet * 2;
+
+            // Update the bet display
+            updateBetDisplay(newBet);
+        } else {
+            flashAlert("Bet can not exceed 10 Tokens");
+        }
+    } else {
+        alert("Please enter a valid bet amount greater than 0.");
+    }
+}
+
+
+
+// Double down
 function doubledown() { 
     if (!gameInProgress) return;
 
-    // Check if the player has two or fewer cards
     if (playerCards.count > 2) {
-        message.innerHTML = "You can only double down with two cards.";
-        new Effect.Shake("betdiv"); // Shake the bet input field to indicate the error
-        return; // Exit the function
+        message.html("You can only double down with two cards.");
+        flashAlert("You can only double down with two cards!");
+        return;
     }
 
-    // Calculate new bet amount (double the current bet)
     var newBet = bet * 2; 
-
-    // Check if the balance is sufficient for doubling down
     if (newBet > money) {
-        message.innerHTML = "You do not have enough money to double down!";
-        new Effect.Shake("betdiv"); // Shake the bet input field to indicate the error
-        return; // Exit the function
+        message.html("You do not have enough money to double down!");
+        $("#betdiv").effect("shake"); // jQuery UI method
+        flashAlert("You do not have enough money to double down!");
+        return;
     }
 
-    standButton.disabled = true;
-    hitButton.disabled = true;
-    doubleButton.disabled = true;
+    standButton.prop("disabled", true);
+    hitButton.prop("disabled", true);
+    doubleButton.prop("disabled", true);
 
-    // Double the player's bet
-    bet = newBet; // Update the current bet
-    updateBetDisplay(bet); // Update the displayed bet amount
+    bet = newBet;
+    updateBetDisplay(bet); 
 
-    // Proceed to deal one more card to the player
     dealCard(playerCards, function() {
         var playerTotal = getTotal(playerCards);
+        updateDisplay(playerTotal); // Update the display with the current total
         if (playerTotal > 21) {
             endGame(false, "YOU WENT OVER 21!");
         } else if (playerCards.count == 5) {
@@ -311,25 +366,65 @@ function doubledown() {
     });
 }
 
-
-
 // Function to update the displayed bet amount
 function updateBetDisplay(bet) {
-    // Assuming you have an element to display the bet amount
-    document.getElementById("bet").value = bet; // Update the bet input field
+    $("#bet").val(bet); // Update the bet input field
 }
-
 
 function stand() {
    if (!gameInProgress)
       return;
-   hitButton.disabled = true;
-   doubleButton.disabled = true;
-   standButton.disabled = true;
+   hitButton.prop("disabled", true);
+   doubleButton.prop("disabled", true);
+   standButton.prop("disabled", true);
+
+   var playerTotal = getTotal(playerCards);
+   updateDisplay(playerTotal); // Update the display with the current total
    dealersTurnAndEndGame();
 }
 
-onload=setup;
+function flashAlert(message) {
+    // Create a div for the alert
+    const alertDiv = $('<div></div>');
+    alertDiv.html(message);
+    alertDiv.css({
+        position: 'absolute',
+        top: '47%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        backgroundColor: 'rgb(100, 149, 237)',
+        color: 'white',
+        padding: '20px',
+        borderRadius: '5px',
+        zIndex: '1000',
+        fontSize: '24px',
+        textAlign: 'center',
+        opacity: '1'
+    });
+
+    if (window.matchMedia('(min-width: 700px)').matches) {
+    alertDiv.css({
+        width: '635.2px', // or any desired width
+        height: '350px',
+        position: 'relative',
+        bottom: '268px',
+        display: 'flex', // Enable Flexbox
+        alignItems: 'center', // Vertically center the content
+        justifyContent: 'center', // Horizontally center the content
+        textAlign: 'center',
+    });
+    } 
+
+    $('body').append(alertDiv);
+
+    // Flash effect
+    alertDiv.fadeTo(1200, 0, function() {
+        $(this).remove(); // Remove the alert after fading out
+    });
+}
+
+$(document).ready(setup);
+
 
 </script>
 </head>
@@ -367,36 +462,53 @@ onload=setup;
             <% } %>
     </div>
 
-<table align=center cellpadding=0 cellspacing=10 border=0;>
-<tr><td>
-<div id="blackjack_container" style="position: relative; border: thick solid #660; background-color: #280; width: 579px; height:500px">
-    <div style="position: absolute; left:20px; top:15px; color:#9F9; font-size:large">Dealer's cards:</div>
-    <div id="dealer1" style="position: absolute; left: 50px; top:50px;  border: 2px solid #660; background-color: #660"></div>
-    <div id="dealer2" style="position: absolute; left: 150px; top:50px;  border: 2px solid #660; background-color: #660"></div>
-    <div id="dealer3" style="position: absolute; left: 250px; top:50px;  border: 2px solid #660; background-color: #660"></div>
-    <div id="dealer4" style="position: absolute; left: 350px; top:50px;  border: 2px solid #660; background-color: #660"></div>
-    <div id="dealer5" style="position: absolute; left: 450px; top:50px;  border: 2px solid #660; background-color: #660"></div>
-    <div style="position: absolute; left:20px; top:210px; color:#9F9; font-size:large">Your cards:</div>
-    <div id="player1" style="position: absolute; left: 50px; top:250px;  border: 2px solid #660; background-color: #660"></div>
-    <div id="player2" style="position: absolute; left: 150px; top:250px;  border: 2px solid #660; background-color: #660"></div>
-    <div id="player3" style="position: absolute; left: 250px; top:250px;  border: 2px solid #660; background-color: #660"></div>
-    <div id="player4" style="position: absolute; left: 350px; top:250px;  border: 2px solid #660; background-color: #660"></div>
-    <div id="player5" style="position: absolute; left: 450px; top:250px;  border: 2px solid #660; background-color: #660"></div>
-    <div style="position: absolute; left:20px; top: 410px; color:#9F9; font-size:large">You have:</div>
-    <div id="money" style="position: absolute; left: 70px; top:445px; color:yellow; font-size:x-large"></div>
-    <div id="betdiv" style="position:absolute; left:300px; top:425px">
-       <span style="color:#9F9">Your bet:</span>&nbsp; <input type=text size=6 id="bet">
+    <table align="center" cellpadding="0" cellspacing="10" border="0">
+        <tr>
+          <td>
+            <div id="blackjack_container">
+              <img id="blackjackcover" src="images/blackjackcover.png">
+              <div id="display"></div>
+              <div id="displaytriangle"></div>
+              <div id="playingcards">
+              <div id="dealer1" class="dealer-card"></div>
+              <div id="dealer2" class="dealer-card"></div>
+              <div id="dealer3" class="dealer-card"></div>
+              <div id="dealer4" class="dealer-card"></div>
+              <div id="dealer5" class="dealer-card"></div>
+              <div id="player1" class="player-card"></div>
+              <div id="player2" class="player-card"></div>
+              <div id="player3" class="player-card"></div>
+              <div id="player4" class="player-card"></div>
+              <div id="player5" class="player-card"></div>
+              </div>
+              <div id="money" class="money-amount"></div>
+              <div id="betdiv" class="bet-container">
+                <span class="bet-label"></span>
+                <input type="text" size="6" id="bet">
+                <span id="TwoX" class="disable" onclick="TwoX()" style="cursor: pointer; color: white;">
+                    2x
+                </span>
+              </div>
+              <div id="betlabel">Your Bet:</div>
+            
+          </td>
+        </tr>
+        <tr>
+          <td align="center">
+            <div id="standhit">
+            <input type="button" id="hitButton" value="Hit" onclick="hit()" disabled>
+            <input type="button" id="standButton" value="Stand" onclick="stand()" disabled>
+        </div>
+            <input type="button" id="doubleButton" value="DoubleDown" onclick="doubledown()" disabled>
+            <input type="button" id="newGameButton" value="Play" onClick="startGame()">
+          </td>
+        </tr>
     </div>
-</div>
-</td></tr>
-<tr><td align=center>
-<input type=button id="hitButton" value="Hit" onclick="hit()" disabled>
-<input type=button id="doubleButton" value="DoubleDown" onclick="doubledown()" disabled>
-<input type=button id="standButton" value="Stand" onclick="stand()" disabled>
-<input type=button id="newGameButton" value="New Game" onClick="startGame()">
-</td></tr>
-<tr><td align=center>
-<span id="message" style="color:#600; font-weight:bold">Welcome to Blackjack!<br>Click "New Game" to Begin.</span>
-</td></tr>
-</table>
+        <tr>
+          <td align="center">
+            <span id="message" class="message">Welcome to Blackjack!<br>Click "New Game" to Begin.</span>
+          </td>
+        </tr>
+      </table>
+      
 </body>
