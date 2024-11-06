@@ -2,56 +2,35 @@ const express = require('express');
 const User = require('../User'); // Ensure the correct path to the User model
 const router = express.Router();
 
-// Middleware to ensure authentication
-router.patch('/incrementTokens/:id', async (req, res) => {
-    const { id } = req.params; // Get ID from URL parameters
+// Middleware to ensure authentication (assumed to be added elsewhere if required)
 
-    try {
-        // Find the user by ID
-        const user = await User.findById(id);
-
-        if (!user) {
-            return res.status(404).json({ message: 'User not found' });
-        }
-
-        // Check if the user has enough tokens before decrementing
-        if (user.tokens < 5) {
-            return res.status(400).json({ message: 'Insufficient tokens' });
-        }
-
-        // Decrement tokens by 5
-        user.tokens -= 5;
-        await user.save();
-
-        res.json(user);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-});
-
+// Route to increment or decrement tokens dynamically
 router.patch('/finalTokens/:id', async (req, res) => {
     const { id } = req.params; // Get ID from URL parameters
-    const { valueToUpdate } = req.query;
-    console.log(valueToUpdate);
-    
-    
+    const valueToUpdate = parseInt(req.query.valueToUpdate); // Parse to integer
+
+    // Check if valueToUpdate is a valid number
+    if (isNaN(valueToUpdate)) {
+        return res.status(400).json({ message: 'Invalid token update value' });
+    }
+
     try {
-        // Find the user by ID and decrement the tokens
+        // Find the user by ID and update tokens
         const updatedUser = await User.findByIdAndUpdate(
             id,
             { $inc: { tokens: valueToUpdate } },  
-            { new: true }             // Return the updated document
+            { new: true }  // Return the updated document
         );
 
+        // Check if the user exists
         if (!updatedUser) {
             return res.status(404).json({ message: 'User not found' });
         }
 
-        res.json(updatedUser);
+        res.json(updatedUser); // Return updated user data
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 });
-
 
 module.exports = router;

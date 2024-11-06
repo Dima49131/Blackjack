@@ -1,0 +1,50 @@
+<table align="center" cellpadding="0" cellspacing="10" border="0">
+    <tr>
+      <td>
+        <div id="displaydealer"></div>
+        <div id="parent">
+        <div id="blackjack_container">
+          <img id="blackjackcover" src="images/blackjackcover.png">
+          <div id="display"></div>
+          <div id="displaytriangle"></div>
+          <div id="playingcards">
+          <div id="dealer1" class="dealer-card"></div>
+          <div id="dealer2" class="dealer-card"></div>
+          <div id="dealer3" class="dealer-card"></div>
+          <div id="dealer4" class="dealer-card"></div>
+          <div id="dealer5" class="dealer-card"></div>
+          <div id="player1" class="player-card"></div>
+          <div id="player2" class="player-card"></div>
+          <div id="player3" class="player-card"></div>
+          <div id="player4" class="player-card"></div>
+          <div id="player5" class="player-card"></div>
+          </div>
+          <div id="money" class="money-amount"></div>
+          <div id="betdiv" class="bet-container">
+            <span class="bet-label"></span>
+            <input type="text" size="6" id="bet">
+            <span id="TwoX" class="disable" onclick="TwoX()" style="cursor: pointer; color: white;">
+                2x
+            </span>
+            </div>
+          <div id="betlabel">Your Bet:</div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <div id="standhit">
+        <input type="button" id="hitButton" value="Hit" onclick="hit()" disabled>
+        <input type="button" id="standButton" value="Stand" onclick="stand()" disabled>
+    </div>
+        <input type="button" id="doubleButton" value="Double Down" onclick="doubledown()" disabled>
+        <input type="button" id="newGameButton" value="Play">
+      </td>
+    </tr>
+</div>
+    <tr>
+      <td align="center">
+        <span id="message" class="message">Welcome to Blackjack!<br>Click "New Game" to Begin.</span>
+      </td>
+    </tr>
+  </table>

@@ -1,0 +1,34 @@
+
+<div id="formContainer"></div> <!-- This can be put anywhere -->
+
+<div class="Navbar">
+    <a href="/homepage" class="SiteNameHeader">Retro Arcade</a>
+
+    <div class="Navbar-Links">
+     <!--
+        <a href="/">Our Team</a>
+        <a href="/">Contact Us</a>
+    -->
+        
+        <!-- Is here if we wanna add more links-->
+    </div>
+
+    <% if (id) { %>
+        
+        <div class="sub-container-navbar">
+            <!--<div id="username"><%= name %></div>-->
+            <div id="tokenbalance"><%= tokenBalance.toFixed(2) %> Tokens</div>
+            <div>
+                <form action="/logout?_method=DELETE" method="POST">
+                    <button  class="commonButton" id="logoutButton" type="submit">Log Out</button>
+                </form>
+            </div>
+        </div>
+
+    <% } else { %>
+        <div class="sub-container-navbar">
+            <div id="tokenbalance"></div>
+            <button class="commonButton" id="loginButton">Add Tokens</button>
+        </div>
+        <% } %>
+</div>
