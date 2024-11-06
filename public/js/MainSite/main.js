@@ -63,7 +63,7 @@ function updateVisibleChipBalances() {
 	$(".current-wager").text(currentWager);
 	$(".current-chip-balance").text(currentChipBalance);
 	localStorage.setItem('balanceupdate', currentChipBalance);
-	$("#tokenbalance").text(currentChipBalance + " Tokens");
+	//$("#tokenbalance").text(currentChipBalance + " Tokens");
 }
 
 // Update card hand totals displayed to user throughout the game

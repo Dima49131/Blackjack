@@ -347,35 +347,57 @@ if (userId != ''){
 */
 
 
-
 function checkThenStartGame() {
     const betElement = document.getElementById('bet');
     const betValue = parseInt(betElement.value, 10); // Get the bet value from the element
 
-    // Check if userId is set and betValue is a valid number
     if (userId !== '' && !isNaN(betValue)) {
-        fetch(`/finalTokens/${userId}?valueToUpdate=${-betValue}`, {  // Negative value to decrement tokens
-            method: 'PATCH',
+        // Step 1: Fetch current token balance
+        fetch(`/getTokens/${userId}`, {
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
             },
         })
         .then(response => response.json())
         .then(data => {
-            if (data.message) {
-                console.error('Error:', data.message);
+            const currentTokens = data.tokens;
+            console.log(currentTokens);
+            console.log(betValue);
+
+            // Step 2: Check if user has enough tokens
+            if (currentTokens >= betValue) {
+                // Step 3: Deduct tokens if sufficient
+                fetch(`/finalTokens/${userId}?valueToUpdate=${-betValue}`, {  // Negative to decrement tokens
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message) {
+                        console.error('Error:', data.message);
+                    } else {
+                        updateUIWithNewTokens(data.tokens);  // Update UI with new token count
+                        startGame();  // Start the game after updating tokens
+                    }
+                })
+                .catch(error => {
+                    console.error('Error updating tokens:', error);
+                });
             } else {
-                updateUIWithNewTokens(data.tokens);  // Update UI with new token count
-                startGame();  // Start the game after updating tokens
+                console.error('Not enough tokens to place the bet.');
             }
         })
         .catch(error => {
-            console.error('Error:', error);
+            console.error('Error fetching tokens:', error);
         });
     } else {
         console.error('Invalid bet value or user ID.');
     }
 }
+
 
 
 function startGame() {
@@ -498,8 +520,8 @@ function endGame(win, why) {
                 flashAlert("You win " + payout + " tokens!");
             }
         } else {
-            payout = -bet;
-            money += payout; // Deduct bet amount on loss
+            //payout = -bet;
+            //money += payout; // Deduct bet amount on loss
             flashAlert("Sorry! You lose " + Math.abs(payout) + " tokens.");
         }
 

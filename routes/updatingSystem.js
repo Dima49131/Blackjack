@@ -2,7 +2,31 @@ const express = require('express');
 const User = require('../User'); // Ensure the correct path to the User model
 const router = express.Router();
 
-// Middleware to ensure authentication (assumed to be added elsewhere if required)
+// Assume you're using Express.js
+router.get('/getTokens/:userId', async (req, res) => {
+    const userId = req.params.userId;
+    try {
+        const tokens = await getUserTokens(userId); // Fetch current tokens from your database
+        console.log('Fetched tokens:', tokens); // Debugging line
+        res.json({ tokens });
+    } catch (error) {
+        console.error('Error fetching tokens:', error); // Detailed error logging
+        res.status(500).json({ message: 'Failed to retrieve tokens.', error: error.message });
+    }
+});
+async function getUserTokens(userId) {
+    try {
+        const user = await User.findById(userId);
+        if (!user) {
+            throw new Error('User not found');
+        }
+        return user.tokens;
+    } catch (error) {
+        console.error('Error in getUserTokens:', error); // Debugging line
+        throw error;
+    }
+}
+
 
 // Route to increment or decrement tokens dynamically
 router.patch('/finalTokens/:id', async (req, res) => {
