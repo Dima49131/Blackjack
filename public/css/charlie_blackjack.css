@@ -29,21 +29,22 @@
   .player-card {
     position: absolute;
     transform: scale(0.8);
+    transition: left 0.5s ease, top 0.5s ease;
   }
 
   
   
   #dealer1 { left: 185px; top: 2%;}
-  #dealer2 { left: 255px; top: 2%; }
-  #dealer3 { left: 325px; top: 2%; }
-  #dealer4 { left: 395px; top: 2%; }
-  #dealer5 { left: 465px; top: 2%; }
+  #dealer2 { left: 220px; top: 2%; }
+  #dealer3 { left: 255px; top: 2%; }
+  #dealer4 { left: 290px; top: 2%; }
+  #dealer5 { left: 325px; top: 2%; }
   
   #player1 { left: 185px; top: 260px; }
-  #player2 { left: 215px; top: 260px; }
-  #player3 { left: 245px; top: 260px; }
-  #player4 { left: 275px; top: 260px; }
-  #player5 { left: 305px; top: 260px; }
+  #player2 { left: 200px; top: 260px; }
+  #player3 { left: 215px; top: 260px; }
+  #player4 { left: 230px; top: 260px; }
+  #player5 { left: 245px; top: 260px; }
   
   .money-amount {
     position: absolute;
@@ -221,12 +222,9 @@ body {
     bottom: 4px;
     left: 15px;
 }
-.disable {
-    opacity: 0.5; /* Makes it look inactive */
-    pointer-events: none; /* Prevents click events */
-}
 
-@media screen and (min-width: 700px) {
+
+@media screen and (min-width: 10px) {
     #blackjack_container {
         position: relative;
         top: 80px;
@@ -255,7 +253,7 @@ body {
     }
 
     #bet{
-        width: 105px;
+        width: 135px;
     }
 
     #betlabel{
@@ -267,17 +265,17 @@ body {
         font-size: 110%;
     }
 
-    #dealer1 { left: 385px; top: 2%;}
-    #dealer2 { left: 455px; top: 2%; }
-    #dealer3 { left: 525px; top: 2%; }
-    #dealer4 { left: 595px; top: 2%; }
-    #dealer5 { left: 665px; top: 2%; }
+    #dealer1 { left: 385px; top: 6%;}
+    #dealer2 { left: 420px; top: 6%; }
+    #dealer3 { left: 455px; top: 6%; }
+    #dealer4 { left: 490px; top: 6%; }
+    #dealer5 { left: 525px; top: 6%; }
     
     #player1 { left: 385px; top: 260px; }
-    #player2 { left: 415px; top: 260px; }
-    #player3 { left: 445px; top: 260px; }
-    #player4 { left: 475px; top: 260px; }
-    #player5 { left: 505px; top: 260px; }
+    #player2 { left: 400px; top: 260px; }
+    #player3 { left: 415px; top: 260px; }
+    #player4 { left: 430px; top: 260px; }
+    #player5 { left: 445px; top: 260px; }
     
 
 
@@ -341,6 +339,21 @@ body {
         background-color: rgb(36, 54, 105);
         z-index: 2;
     }
+
+    #displaydealer{
+        position: relative;
+        bottom: -113px;
+        left: 412px;
+        color: white;
+        font-size: 120%;
+        font-weight: bold;
+        height: 25px;
+        width: 40px;
+        text-align: center;
+        justify-content: center;
+        background-color: rgb(36, 54, 105);
+        z-index: 2;
+    }
     
     #displaytriangle {
         position: relative;
@@ -361,8 +374,69 @@ body {
         font-size: 100%;
         position: relative;
         bottom: 4px;
-        left: 38px;
+        left: 10px;
     }
 
+}
+
+@media screen and (max-width: 700px) {
+    #blackjack_container {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%) scale(0.8); 
+        width: 663.2px; /* Adjust as needed */
+        margin: 0 auto;
+    }
+
+    /* Adjusting button styles */
+    #hitButton,
+    #standButton,
+    #newGameButton{
+        position: absolute; /* Change to absolute */
+        transform: scale(0.8); /* Remove translateX */
+        z-index: 1; /* Ensure buttons are on top */
+        z-index: 10; 
+    }
+
+    #hitButton {
+        left: calc(50% + 76px); /* Centering buttons with relative positioning */
+        top: 515px;
+    }
+
+    #standButton {
+        left: 60%; /* Center with adjustment */
+        top: 515px;
+    }
+
+    #doubleButton {
+        margin: none;
+        left: calc(50% - 257px); /* Center with adjustment */
+        top: 183px; /* Adjusted for visibility */
+        width: 144px;
+        height: 32px;
+        font-size: 88%;
+    }
+
+    #newGameButton {
+        left: calc(50% - 276px); /* Center with adjustment */
+        top: 310px; /* Adjusted for visibility */
+    }
+    #standhit{
+        position: absolute; /* Change from absolute to relative */
+        top: -310px;
+        left: calc(50% - 266px);
+        
+    }
+}
+
+@media screen and (max-width: 603px) {
+    #doubleButton {
+        margin: none;
+        left: calc(50% - 257px); /* Center with adjustment */
+        top: 165px; /* Adjusted for visibility */
+        width: 144px;
+        height: 32px;
+        font-size: 88%;
+}
 }
 
