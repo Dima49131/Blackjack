@@ -773,7 +773,7 @@ function doubledown() {
             console.log(betValue);
      
     var newBet = bet * 2; 
-    if (newBet > currentTokens) {
+    if (newBet >= currentTokens) {
         message.html("You do not have enough money to double down!");
         $("#betdiv").effect("shake"); // jQuery UI method
         flashAlert("You do not have enough money to double down!");
