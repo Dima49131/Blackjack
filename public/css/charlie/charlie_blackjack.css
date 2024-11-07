@@ -411,7 +411,7 @@ body {
     #doubleButton {
         margin: none;
         left: calc(50% - 257px); /* Center with adjustment */
-        top: 183px; /* Adjusted for visibility */
+        top: 175px; /* Adjusted for visibility */
         width: 144px;
         height: 32px;
         font-size: 88%;
@@ -433,7 +433,7 @@ body {
     #doubleButton {
         margin: none;
         left: calc(50% - 257px); /* Center with adjustment */
-        top: 165px; /* Adjusted for visibility */
+        top: 175px; /* Adjusted for visibility */
         width: 144px;
         height: 32px;
         font-size: 88%;
