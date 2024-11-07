@@ -35,7 +35,7 @@ router.get('/charlieblackjack', (req, res) => {
 
 router.post('/login', (req, res, next) => {
     // Capture the current page or referer to redirect after login
-    const redirectTo = req.body.redirectTo || req.headers.referer || '/homepage';  // Use referer or fallback to '/homepage'
+    const redirectTo = '/';  // Use referer or fallback to '/homepage'
 
     passport.authenticate('local', (err, user, info) => {
         if (err) return next(err);
