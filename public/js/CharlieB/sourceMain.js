@@ -2,6 +2,11 @@
 const thisStartButton = document.getElementById("newGameButton");
 thisStartButton.addEventListener("click", checkThenStartGame);
 
+
+const thisDoubleButton = document.getElementById("doubleButton");
+thisDoubleButton.addEventListener("click", doubleDown);
+
+
 var dealerCards = [];  // Arrays holding the DisplayCard objects used to show the cards
 var playerCards = [];
 
@@ -745,20 +750,26 @@ function TwoX() {
 
 
 // Double down
-function doubledown() { 
+function doubleDown() { 
     if (!gameInProgress) return;
 
-    
+    // Ensure player has exactly two cards
+    console.log(playerCards.length);
+    console.log(playerCards);
+    const faceUpCards = playerCards.filter(card => card.faceDown === false);
 
-    if (playerCards.count > 2) {
+    console.log(faceUpCards);
+
+    if (faceUpCards.length > 2) { // Changed from playerCards.count to playerCards.length
         message.html("You can only double down with two cards.");
         flashAlert("You can only double down with two cards!");
         return;
     }
 
-
+    // Get and double the bet value
     const betElement = document.getElementById('bet');
     const betValue = parseInt(betElement.value, 10); // Get the bet value from the element
+
     if (userId !== '' && !isNaN(betValue)) {
         fetch(`/getTokens/${userId}`, {
             method: 'GET',
@@ -769,65 +780,89 @@ function doubledown() {
         .then(response => response.json())
         .then(data => {
             const currentTokens = data.tokens;
-            console.log(currentTokens);
-            console.log(betValue);
-     
-    var newBet = betValue * 2; 
-    if (newBet >= currentTokens) {
-        message.html("You do not have enough money to double down!");
-        $("#betdiv").effect("shake"); // jQuery UI method
-        flashAlert("You do not have enough money to double down!");
-        return;
-    }
+            const newBet = betValue * 2; 
 
-    standButton.prop("disabled", true);
-    hitButton.prop("disabled", true);
-    doubleButton.prop("disabled", true);
+            // Check if user has enough tokens
+            if (newBet > currentTokens) { // Note: Changed condition to >
+                console.log("Not enough money");
+                message.html("You do not have enough money to double down!");
+                $("#betdiv").effect("shake"); // jQuery UI method
+                flashAlert("You do not have enough money to double down!");
+                return;
+            }
 
-    bet = newBet;
-     
+            if (currentTokens >= betValue) {
+                // Step 3: Deduct tokens if sufficient
+                fetch(`/finalTokens/${userId}?valueToUpdate=${-betValue}`, {  // Negative to decrement tokens
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message) {
+                        console.error('Error:', data.message);
+                    } else {
+                        updateUIWithNewTokens(data.tokens);  // Update UI with new token count
+                        startGame();  // Start the game after updating tokens
+                    }
+                })
+                .catch(error => {
+                    console.error('Error updating tokens:', error);
+                });
+            } else {
+                console.error('Not enough tokens to place the bet.');
+            }
 
-    dealCard(playerCards, function() {
-        var playerTotal = getTotal(playerCards);
-        updateDisplay(playerTotal); // Update the display with the current total
-        if (playerTotal > 21) {
-            setTimeout(function() {
-            updateDisplayDealer(''); // Clears the dealer's display after 0.5s
-            }, 1500);
-            setTimeout(function() {
-            updateDisplay(''); // Clears the dealer's display after 0.5s
-            }, 1500);
-            endGame(false, "YOU WENT OVER 21!");
-        } else if (playerCards.count == 5) {
-            setTimeout(function() {
-            updateDisplayDealer(''); // Clears the dealer's display after 0.5s
-            }, 1500);
-            setTimeout(function() {
-            updateDisplay(''); // Clears the dealer's display after 0.5s
-            }, 1500);
-            endGame(true, "You took 5 cards without going over 21.");
-        } else if (playerTotal == 21) {
-            setTimeout(function() {
-            updateDisplayDealer(''); // Clears the dealer's display after 0.5s
-            }, 1500);
-            setTimeout(function() {
-            updateDisplay(''); // Clears the dealer's display after 0.5s
-            }, 1500);
-            dealersTurnAndEndGame();
-        } else {
-            setTimeout(function() {
-            updateDisplayDealer(''); // Clears the dealer's display after 0.5s
-            }, 1500);
-            setTimeout(function() {
-            updateDisplay(''); // Clears the dealer's display after 0.5s
-            }, 1500);
-            dealersTurnAndEndGame();
+
+            // Disable buttons as double down is a final move in most Blackjack rules
+            standButton.prop("disabled", true);
+            hitButton.prop("disabled", true);
+            doubleButton.prop("disabled", true);
+
+            // Update the bet value to newBet
+            betElement.value = newBet;
+            bet = newBet; // Update actual bet in game state if necessary
+
             
-        }
-    });
-});
+            // Deal one card to the player and check the game status after
+            dealCard(playerCards, function() {
+                const playerTotal = getTotal(playerCards);
+                updateDisplay(playerTotal); // Update the display with the current total
+
+                if (playerTotal > 21) {
+                    setTimeout(() => {
+                        updateDisplayDealer('');
+                        updateDisplay('');
+                        endGame(false, "YOU WENT OVER 21!");
+                    }, 1500);
+                } else if (playerCards.length == 5) { 
+                    setTimeout(() => {
+                        updateDisplayDealer('');
+                        updateDisplay('');
+                        endGame(true, "You took 5 cards without going over 21.");
+                    }, 1500);
+                } else if (playerTotal == 21) {
+                    setTimeout(() => {
+                        updateDisplayDealer('');
+                        updateDisplay('');
+                        dealersTurnAndEndGame();
+                    }, 1500);
+                } else {
+                    // Dealer’s turn if player did not go over 21 or reach 21
+                    setTimeout(() => {
+                        updateDisplayDealer('');
+                        updateDisplay('');
+                        dealersTurnAndEndGame();
+                    }, 1500);
+                }
+            });
+        })
+        .catch(error => console.error("Error fetching tokens:", error));
+    }
 }
-}
+
 
 // Function to update the displayed bet amount
 function updateBetDisplay(bet) {
