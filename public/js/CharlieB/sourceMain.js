@@ -730,7 +730,7 @@ function TwoX() {
         if (currentBet <= 5) {
             // Double the bet
             let newBet = currentBet * 2;
-
+            /** go herre **************** */
             // Update the bet display
             updateBetDisplay(newBet);
         } else {
@@ -747,14 +747,32 @@ function TwoX() {
 function doubledown() { 
     if (!gameInProgress) return;
 
+    
+
     if (playerCards.count > 2) {
         message.html("You can only double down with two cards.");
         flashAlert("You can only double down with two cards!");
         return;
     }
 
+
+    const betElement = document.getElementById('bet');
+    const betValue = parseInt(betElement.value, 10); // Get the bet value from the element
+    if (userId !== '' && !isNaN(betValue)) {
+        fetch(`/getTokens/${userId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            const currentTokens = data.tokens;
+            console.log(currentTokens);
+            console.log(betValue);
+     
     var newBet = bet * 2; 
-    if (newBet > money) {
+    if (newBet > currentTokens) {
         message.html("You do not have enough money to double down!");
         $("#betdiv").effect("shake"); // jQuery UI method
         flashAlert("You do not have enough money to double down!");
@@ -806,6 +824,8 @@ function doubledown() {
             
         }
     });
+});
+}
 }
 
 // Function to update the displayed bet amount
