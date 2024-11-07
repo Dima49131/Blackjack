@@ -371,6 +371,12 @@ function checkThenStartGame() {
             console.log(currentTokens);
             console.log(betValue);
 
+            if (betValue > 10) {
+                flashAlert("Bet must be a number between 1 and 10");
+                console.log("stop exicution");
+                return;
+            }
+
             // Step 2: Check if user has enough tokens
             if (currentTokens >= betValue) {
                 // Step 3: Deduct tokens if sufficient
@@ -415,13 +421,6 @@ function startGame() {
     reset_cards()
     if (!gameInProgress) {
         var betText = betInput.val();
-        if (!betText.match(/^[0-9]+$/) || betText < 1 || betText > 10) {
-            flashAlert("Bet must be a number between 1 and 10");
-            message.html("Bet must be a number between 1 and " + money + 
-                 ".<br>Fix this problem and press New Game again.");
-            $("#betdiv").effect("shake"); // jQuery UI method
-            return;
-        }
         betInput.prop("disabled", true);
         bet = Number(betText);
 
