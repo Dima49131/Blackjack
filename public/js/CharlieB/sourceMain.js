@@ -780,7 +780,7 @@ function doubleDown() {
         .then(response => response.json())
         .then(data => {
             const currentTokens = data.tokens;
-            const newBet = betValue * 2; 
+            const newBet = betValue; 
 
             // Check if user has enough tokens
             if (newBet > currentTokens) { // Note: Changed condition to >
