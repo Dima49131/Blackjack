@@ -353,6 +353,7 @@ if (userId != ''){
 
 
 function checkThenStartGame() {
+    
     const betElement = document.getElementById('bet');
     const betValue = parseInt(betElement.value, 10); // Get the bet value from the element
 
@@ -390,22 +391,27 @@ function checkThenStartGame() {
                 })
                 .catch(error => {
                     console.error('Error updating tokens:', error);
+                    flashAlert("Create an Account to Play!")
                 });
             } else {
                 console.error('Not enough tokens to place the bet.');
+                flashAlert("Not enough Tokens!")
             }
         })
         .catch(error => {
             console.error('Error fetching tokens:', error);
+            flashAlert("Create an Account to Play!")
         });
     } else {
         console.error('Invalid bet value or user ID.');
+        flashAlert("Create an Account to Play!")
     }
 }
 
 
 
 function startGame() {
+    newGameButton.prop("disabled", true);
     reset_cards()
     if (!gameInProgress) {
         var betText = betInput.val();
@@ -432,7 +438,6 @@ function startGame() {
         deck.shuffle();
         dealerCards.count = 0;
         playerCards.count = 0;
-
         // Deal cards one by one
         dealCard(playerCards, function() {
             // First player's card dealt
@@ -447,7 +452,6 @@ function startGame() {
                         standButton.prop("disabled", false);
                         hitButton.prop("disabled", false);
                         doubleButton.prop("disabled", false);
-                        newGameButton.prop("disabled", true);
                         gameInProgress = true;
                         var dealerTotal = getTotal(dealerCards);
                         var dealerTotalDisplay = getFirstDealerCardValue(dealerCards)
@@ -527,7 +531,7 @@ function endGame(win, why) {
         } else {
             //payout = -bet;
             //money += payout; // Deduct bet amount on loss
-            flashAlert("Sorry! You lose " + Math.abs(payout) + " tokens.");
+            flashAlert("Sorry! You lose");
         }
 
         // Save updated balance in local storage
@@ -786,7 +790,7 @@ function doubleDown() {
             if (newBet > currentTokens) { // Note: Changed condition to >
                 console.log("Not enough money");
                 message.html("You do not have enough money to double down!");
-                $("#betdiv").effect("shake"); // jQuery UI method
+                //$("#betdiv").effect("shake"); // jQuery UI method
                 flashAlert("You do not have enough money to double down!");
                 return;
             }
