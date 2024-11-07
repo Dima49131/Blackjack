@@ -532,6 +532,7 @@ function endGame(win, why) {
         updateUserBalanceOnServer(payout);
 
     }, 900);
+    betInput.prop("disabled", false);
 }
 
 // Optional function to update user balance on the server
@@ -766,7 +767,7 @@ function doubledown() {
     doubleButton.prop("disabled", true);
 
     bet = newBet;
-    updateBetDisplay(bet); 
+     
 
     dealCard(playerCards, function() {
         var playerTotal = getTotal(playerCards);
