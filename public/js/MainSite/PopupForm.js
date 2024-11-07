@@ -59,14 +59,6 @@ const formsHTML = `
     </div>
 `;
 
-
-
-
-
-
-
-
-
 // Show the pop-up when the login button is clicked
 loginButton.addEventListener('click', () => {
     formContainer.innerHTML = formsHTML; // Insert the forms
@@ -78,8 +70,8 @@ loginButton.addEventListener('click', () => {
     const usernameName = document.getElementById('name'); // Correct ID for registration username
 
     popup.style.display = 'block'; 
-    loginForm.style.display = 'block';  // Show the login form
-    registerForm.style.display = 'none'; // Hide the registration form
+    loginForm.style.display = 'none';  // Show the login form
+    registerForm.style.display = 'block'; // Hide the registration form
     usernameInput.focus(); // Focus on login email input
 
     // Hide the pop-up when the close button is clicked
